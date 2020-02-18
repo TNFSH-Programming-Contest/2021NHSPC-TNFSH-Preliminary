@@ -1,0 +1,10 @@
+{
+	"files.trimTrailingWhitespace": true,
+	"[markdown]": {
+		"files.trimTrailingWhitespace": false
+	},
+	"files.eol": "\n",
+	"files.associations": {
+		"vector": "cpp"
+	}
+}
