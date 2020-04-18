@@ -97,7 +97,7 @@ gen norm -1000000000 1000000000 jvnyj
  - gen/data: 測資產生指令，參見[TPS的說明](https://github.com/ioi-2017/tps/tree/master/docs#gendata)
  - scripts: TPS所使用的腳本
  - solution: 標程及其他解法程式碼（包含所有拿部分分的程式碼），不要跟 validator 搞混
- - solution/check.txt: 所有標程對於所有測資的執行狀況（包含是否WA、TLE）
+ - solution/check.txt: 所有標程對於所有測資的執行狀況（包含是否WA、TLE），使用指令 `make arithmetic-check`，參見[Makefile](Makefile)
  - statement: 題本
  - statement/problem.md: （TPS格式）markdown 格式的題目敘述，之後會以 pandoc 輸出成 PDF
  - statement/problem.pdf: （TPS格式）用 `tps statement` 輸出的 PDF 題目敘述
