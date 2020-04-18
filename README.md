@@ -74,7 +74,7 @@ gen norm -1000000000 1000000000 jvnyj
 
 測試不同演算法**是否會TLE、得到哪些部分分數**的程式應視為**標程**，請參閱標程說明。  
 
-## 標程、[solutions/](Arithmetic/solutions/)、[solutions.json](Arithmetic/solutions.json)
+## 標程、[solution/](Arithmetic/solution/)、[solutions.json](Arithmetic/solutions.json)
 將標程及其他拿部分分的解法都放在[solutions/](Arithmetic/solutions/)底下。  
 並在[solutions.json](Arithmetic/solutions.json)設定標程如以下格式：  
 ```json
