@@ -3,27 +3,27 @@
         "validator.cpp"
     ],
     "subtasks": {
-        "sample": {
-            "index": 1,
-            "score": 2,
+        "samples": {
+            "index": 0,
+            "score": 0,
             "validators": []
         },
         "a0": {
-            "index": 2,
-            "score": 18,
+            "index": 1,
+            "score": 20,
             "validators": [
                 "validator-2.cpp"
             ]
         },
         "1e4": {
-            "index": 3,
+            "index": 2,
             "score": 30,
             "validators": [
                 "validator-3.cpp"
             ]
         },
         "all": {
-            "index": 4,
+            "index": 3,
             "score": 50,
             "validators": []
         }

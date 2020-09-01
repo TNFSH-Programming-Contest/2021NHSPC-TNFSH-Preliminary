@@ -1,17 +1,17 @@
 import sys
 import os
-from collections import defaultdict
 import shlex
 import subprocess
 
-from util import load_json, wait_process_success
-from gen_data_parser import DataVisitor, parse_data, check_test_pattern_exists, test_name_matches_pattern
+from util import get_bool_environ, simple_usage_message, load_json, wait_process_success
+from gen_data_parser import DataVisitor, parse_data
+import tests_util as tu
 
 
 PROBLEM_JSON = os.environ.get('PROBLEM_JSON')
 SUBTASKS_JSON = os.environ.get('SUBTASKS_JSON')
 INTERNALS_DIR = os.environ.get('INTERNALS')
-SPECIFIC_TESTS = os.environ.get('SPECIFIC_TESTS')
+SPECIFIC_TESTS = get_bool_environ('SPECIFIC_TESTS')
 SPECIFIED_TESTS_PATTERN = os.environ.get('SPECIFIED_TESTS_PATTERN')
 
 
@@ -27,6 +27,12 @@ class SummaryVisitor(DataVisitor):
         stream.write("# test_name gen_line_number gen_line_content\n")
         for test in self.tests:
             stream.write("%s\t%3d\t%s\n" % test)
+
+    def make_gen_summary_file(self, tests_dir):
+        GEN_SUMMARY_FILE_NAME = os.environ.get('GEN_SUMMARY_FILE_NAME')
+        gen_summary_file = os.path.join(tests_dir, GEN_SUMMARY_FILE_NAME)
+        with open(gen_summary_file, 'w') as f:
+            self.print_summary(f)
 
 
 class MappingVisitor(DataVisitor):
@@ -47,57 +53,57 @@ class MappingVisitor(DataVisitor):
     def on_test(self, testset_name, test_name, line, line_number):
         self.tests_map[testset_name].add(test_name)
 
-    def get_test_subtasks(self):
-        test_subtasks = defaultdict(list)
-        for subtask in self.subtasks:
-            for test in self.tests_map[subtask]:
-                test_subtasks[test].append(subtask)
-        return test_subtasks
-
     def print_mapping(self, stream):
         for subtask in self.subtasks:
             for test in sorted(list(self.tests_map[subtask])):
                 stream.write("%s %s\n" % (subtask, test))
 
+    def make_mapping_file(self, tests_dir):
+        MAPPING_FILE_NAME = os.environ.get('MAPPING_FILE_NAME')
+        mapping_file = os.path.join(tests_dir, MAPPING_FILE_NAME)
+        with open(mapping_file, 'w') as f:
+            self.print_mapping(f)
+
 
 class GeneratingVisitor(DataVisitor):
+    def __init__(self, tests_dir):
+        self.tests_dir = tests_dir
+        super().__init__()
+
     def on_test(self, testset_name, test_name, line, line_number):
-        global tests_dir
-        if SPECIFIC_TESTS == "false" or test_name_matches_pattern(test_name, SPECIFIED_TESTS_PATTERN):
+        if not SPECIFIC_TESTS or tu.test_name_matches_pattern(test_name, SPECIFIED_TESTS_PATTERN):
             command = [
-                    'bash',
-                    os.path.join(INTERNALS_DIR, 'gen_test.sh'),
-                    tests_dir,
-                    test_name,
-                ] + shlex.split(line)
+                'bash',
+                os.path.join(INTERNALS_DIR, 'gen_test.sh'),
+                self.tests_dir,
+                test_name,
+            ] + shlex.split(line)
             wait_process_success(subprocess.Popen(command))
 
 
-if __name__ == '__main__':
-    
-    if len(sys.argv) != 4:
-        from util import simple_usage_message
-        simple_usage_message("<tests-dir> <mapping-file> <gen-summary-file>")
-    
-    global tests_dir
-    tests_dir = sys.argv[1]
-    mapping_file = sys.argv[2]
-    gen_summary_file = sys.argv[3]
-    
-    task_data = load_json(PROBLEM_JSON)
-    gen_data = sys.stdin.readlines()
+def _main():
+    if len(sys.argv) != 3:
+        simple_usage_message("<gen-data-file> <tests-dir>")
+    gen_data_file = sys.argv[1]
+    tests_dir = sys.argv[2]
 
-    if SPECIFIC_TESTS == "true":
-        check_test_pattern_exists(gen_data, task_data, SPECIFIED_TESTS_PATTERN)
+    task_data = load_json(PROBLEM_JSON)
+    with open(gen_data_file, 'r') as gdf:
+        gen_data = gdf.readlines()
+
+    if SPECIFIC_TESTS:
+        tu.check_pattern_exists_in_test_names(SPECIFIED_TESTS_PATTERN, tu.get_test_names_by_gen_data(gen_data, task_data))
 
     summary_visitor = SummaryVisitor()
     parse_data(gen_data, task_data, summary_visitor)
-    with open(gen_summary_file, 'w') as f:
-        summary_visitor.print_summary(f)
-    
+    summary_visitor.make_gen_summary_file(tests_dir)
+
     mapping_visitor = MappingVisitor()
     parse_data(gen_data, task_data, mapping_visitor)
-    with open(mapping_file, 'w') as f:
-        mapping_visitor.print_mapping(f)
+    mapping_visitor.make_mapping_file(tests_dir)
 
-    parse_data(gen_data, task_data, GeneratingVisitor())
+    parse_data(gen_data, task_data, GeneratingVisitor(tests_dir))
+
+
+if __name__ == '__main__':
+    _main()

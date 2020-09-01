@@ -119,22 +119,19 @@ function handle_positional_arg {
 
 argument_parser "handle_positional_arg" "handle_option" "$@"
 
-echo "Invoking ${solution}"
-echo
-
 if variable_not_exists "solution" ; then
 	errcho "Solution is not specified."
 	usage
 	exit 2
 fi
 
-if ! is_windows && ! python -c "import psutil" >/dev/null 2>/dev/null; then
+if ! is_windows && ! "${PYTHON}" -c "import psutil" >/dev/null 2>/dev/null; then
 	cerrcho error -n "Error: "
 	errcho "Package 'psutil' is not installed."
 	errcho "You can install it using:"
 	errcho -e "\tpip install psutil"
 	errcho "or:"
-	errcho -e "\tpython -m pip install psutil"
+	errcho -e "\t${PYTHON} -m pip install psutil"
 	exit 1
 fi
 
@@ -149,7 +146,7 @@ if ! check_float "${SOFT_TL}"; then
 fi
 
 if variable_not_exists "HARD_TL" ; then
-	HARD_TL="$(python -c "print(${SOFT_TL} + 2)")"
+	HARD_TL="$("${PYTHON}" -c "print(${SOFT_TL} + 2)")"
 fi
 
 if ! check_float "${HARD_TL}"; then
@@ -158,17 +155,14 @@ if ! check_float "${HARD_TL}"; then
 	exit 2
 fi
 
-if python -c "exit(0 if ${HARD_TL} <= ${SOFT_TL} else 1)"; then
+if "${PYTHON}" -c "import sys; sys.exit(0 if ${HARD_TL} <= ${SOFT_TL} else 1)"; then
 	errcho "Provided hard time limit (${HARD_TL}) is not greater than the soft time limit (${SOFT_TL})."
 	usage
 	exit 2
 fi
 
-gen_summary_file="${tests_dir}/${GEN_SUMMARY_FILE_NAME}"
-
 sensitive check_file_exists "Solution file" "${solution}"
 sensitive check_directory_exists "Tests directory" "${tests_dir}"
-sensitive check_file_exists "Test generation summary file" "${gen_summary_file}" "Tests are not correctly generated.\n"
 
 export SHOW_REASON SENSITIVE_RUN WARNING_SENSITIVE_RUN SPECIFIC_TESTS SPECIFIED_TESTS_PATTERN SKIP_CHECK SOFT_TL HARD_TL
 
@@ -185,16 +179,18 @@ else
 fi
 echo
 
-printf "%-${STATUS_PAD}scompile" "checker"
-if "${SKIP_CHECK}"; then
-	echo_status "SKIP"
-else
-	sensitive reporting_guard "checker.compile" build_with_make "${CHECKER_DIR}"
+if "${HAS_CHECKER}"; then
+	printf "%-${STATUS_PAD}scompile" "checker"
+	if "${SKIP_CHECK}"; then
+		echo_status "SKIP"
+	else
+		sensitive reporting_guard "checker.compile" build_with_make "${CHECKER_DIR}"
+	fi
+	echo
 fi
-echo
 
 ret=0
-python "${INTERNALS}/invoke.py" "${tests_dir}" "${gen_summary_file}" || ret=$?
+"${PYTHON}" "${INTERNALS}/invoke.py" "${tests_dir}" || ret=$?
 
 
 echo
@@ -204,7 +200,5 @@ if [ ${ret} -eq 0 ]; then
 else
 	cecho fail "Terminated."
 fi
-
-echo "-------------------------------------------------------------------------"
 
 exit ${ret}

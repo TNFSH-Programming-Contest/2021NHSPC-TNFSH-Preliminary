@@ -4,7 +4,7 @@
 
 | ID | gen | solution | tests | statement | validator | config |
 | --- | --- | --- | --- | --- | --- | --- |
-| A. Arithmetic | [gen](Arithmetic/gen) | [solution](Arithmetic/solution) [check](Arithmetic/solution/check.txt) | [tests](Arithmetic/tests) | [statement](Arithmetic/statement) [problem](Arithmetic/statement/problem.md) | [validator](Arithmetic/validator) |[problem](Arithmetic/problem.json) [solutions](Arithmetic/solutions.json) [subtasks](Arithmetic/subtasks.json) |
+| A. Arithmetic | [gen](Arithmetic/gen) | [solution](Arithmetic/solution) [check](Arithmetic/solution/check.txt) | [tests](Arithmetic/tests) | [statement](Arithmetic/statement) [problem](Arithmetic/statement/index.md) | [validator](Arithmetic/validator) |[problem](Arithmetic/problem.json) [solutions](Arithmetic/solutions.json) [subtasks](Arithmetic/subtasks.json) |
 
 # 操作說明
 ## 題目設定、[problem.json](Arithmetic/problem.json)
@@ -19,7 +19,7 @@
 | 上傳間隔 | 120 秒 | [problem.json](Arithmetic/problem.json)的`min_submission_interval`欄位 |
 
 ## 題本、[statement/](Arithmetic/statement/)
-題本使用Markdown撰寫並置於[statement/problem.md](Arithmetic/statement/problem.md)，格式請參照該連結。  
+題本使用Markdown撰寫並置於[statement/index.md](Arithmetic/statement/index.md)，格式請參照該連結。  
 切到題目目錄底下後使用`tps statement`指令產生PDF檔。
 
 ## 子任務配分、[subtasks.json](Arithmetic/subtasks.json)
@@ -99,8 +99,8 @@ gen norm -1000000000 1000000000 jvnyj
  - solution: 標程及其他解法程式碼（包含所有拿部分分的程式碼），不要跟 validator 搞混
  - solution/check.txt: 所有標程對於所有測資的執行狀況（包含是否WA、TLE），使用指令 `make arithmetic-check`，參見[Makefile](Makefile)
  - statement: 題本
- - statement/problem.md: （TPS格式）markdown 格式的題目敘述，之後會以 pandoc 輸出成 PDF
- - statement/problem.pdf: （TPS格式）用 `tps statement` 輸出的 PDF 題目敘述
+ - statement/index.md: （TPS格式）markdown 格式的題目敘述，之後會以 pandoc 輸出成 PDF
+ - statement/index.pdf: （TPS格式）用 `tps statement` 輸出的 PDF 題目敘述
  - tests: 測試資料
  - tests/mapping: 各子任務所屬測資檔案對應表（`tps gen` 自動產生），使用於自動匯入CMS時
  - validator: 驗證測資格式是否正確，是否符合範圍限制，各子任務是否符合各自限制，不要跟 solution 搞混

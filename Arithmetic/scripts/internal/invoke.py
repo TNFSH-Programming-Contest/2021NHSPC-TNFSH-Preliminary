@@ -2,51 +2,36 @@ import sys
 import os
 import subprocess
 
-from util import check_file_exists, wait_process_success
-from color_util import cprint, colors
-from gen_data_parser import check_test_pattern_exists_in_list, test_name_matches_pattern
-from test_exists import test_exists
+from util import get_bool_environ, simple_usage_message, wait_process_success
+from color_util import cprinterr, colors
+import tests_util as tu
 
 
 INTERNALS_DIR = os.environ.get('INTERNALS')
-SPECIFIC_TESTS = os.environ.get('SPECIFIC_TESTS')
+SPECIFIC_TESTS = get_bool_environ('SPECIFIC_TESTS')
 SPECIFIED_TESTS_PATTERN = os.environ.get('SPECIFIED_TESTS_PATTERN')
 
 
 if __name__ == '__main__':
-    
-    if len(sys.argv) != 3:
-        from util import simple_usage_message
-        simple_usage_message("<tests-dir> <gen-summary-file>")
-
+    if len(sys.argv) != 2:
+        simple_usage_message("<tests-dir>")
     tests_dir = sys.argv[1]
-    gen_summary_file = sys.argv[2]
-    
-    if not os.path.isdir(tests_dir):
-        sys.stderr.write("The tests directory not found or not a valid directory: {}.\n".format(tests_dir))
-        exit(4)
-    check_file_exists(gen_summary_file, "The tests are not correctly generated.\n")
-    
-    with open(gen_summary_file) as gsf:
-        test_name_list = [line.split()[0] 
-                            for line in map(str.strip, gsf.readlines())
-                            if line and not line.startswith("#")]
-    
-    if SPECIFIC_TESTS == "true":
-        check_test_pattern_exists_in_list(test_name_list, SPECIFIED_TESTS_PATTERN)
-        test_name_list = filter(lambda test_name : test_name_matches_pattern(test_name, SPECIFIED_TESTS_PATTERN), test_name_list)
 
-    missing_tests = []
-    available_tests = []
-    for test_name in test_name_list:
-        if test_exists(tests_dir, test_name):
-            available_tests.append(test_name)
-        else:
-            missing_tests.append(test_name)
-    
+    try:
+        test_name_list = tu.get_test_names_from_tests_dir(tests_dir)
+    except tu.MalformedTestsException as e:
+        cprinterr(colors.ERROR, "Error:")
+        sys.stderr.write("{}\n".format(e))
+        sys.exit(4)
+
+    if SPECIFIC_TESTS:
+        tu.check_pattern_exists_in_test_names(SPECIFIED_TESTS_PATTERN, test_name_list)
+        test_name_list = tu.filter_test_names_by_pattern(test_name_list, SPECIFIED_TESTS_PATTERN)
+
+    available_tests, missing_tests = tu.divide_tests_by_availability(test_name_list, tests_dir)
     if missing_tests:
-        cprint(colors.WARN, "Missing tests: "+(", ".join(missing_tests)))
-    
+        cprinterr(colors.WARN, "Missing tests: "+(", ".join(missing_tests)))
+
     for test_name in available_tests:
         command = [
             'bash',
@@ -57,5 +42,4 @@ if __name__ == '__main__':
         wait_process_success(subprocess.Popen(command))
 
     if missing_tests:
-        cprint(colors.WARN, "Missing {} {}!".format(len(missing_tests), "tests" if len(missing_tests)!=1 else "test"))
-
+        cprinterr(colors.WARN, "Missing {} {}!".format(len(missing_tests), "tests" if len(missing_tests) != 1 else "test"))

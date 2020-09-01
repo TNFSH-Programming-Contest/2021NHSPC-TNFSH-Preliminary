@@ -16,6 +16,25 @@ if [ -z "${BASE_DIR+x}" ]; then
 	fi
 fi
 
+
+if [ -n "${PYTHON+x}" ] ; then
+	if ! command -v "${PYTHON}" >/dev/null 2>&1; then
+		>&2 echo "Error: Python command '${PYTHON}' set by environment variable 'PYTHON' does not exist."
+		exit 3
+	fi
+else
+	if command -v "python3" >/dev/null 2>&1 ; then
+		PYTHON="python3"
+	elif command -v "python" >/dev/null 2>&1 ; then
+		PYTHON="python"
+	else
+		>&2 echo "Error: Environment variable 'PYTHON' is not set and neither of python commands 'python3' nor 'python' exists."
+		exit 3
+	fi
+fi
+export PYTHON
+
+
 source "${BASE_DIR}/scripts/internal/locations.sh"
 source "${INTERNALS}/problem_data.sh"
 
@@ -24,10 +43,7 @@ if [ -n "${PYTHONPATH+x}" ]; then
 else
 	PYTHONPATH=""
 fi
-PYTHONPATH="${PYTHONPATH}${INTERNALS}:${TEMPLATES}"
-
-shopt -s expand_aliases
-alias python="/usr/bin/python3"
+PYTHONPATH="${PYTHONPATH}${INTERNALS}:${TEMPLATES}:${EXPORTERS_DIR}"
 
 ulimit -s 512000 > /dev/null 2>&1 || true
 JAVA_OPTS="-Xmx512M -Xss256M"

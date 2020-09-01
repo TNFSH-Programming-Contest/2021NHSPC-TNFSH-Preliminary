@@ -33,6 +33,39 @@ function check_variable {
 	fi
 }
 
+function set_variable {
+	local -r var_name="$1"; shift
+	local -r var_value="$1"; shift
+	printf -v "${var_name}" '%s' "${var_value}"
+}
+
+function increment {
+	# Calling ((v++)) causes unexpected exit in some versions of bash if used with 'set -e'.
+	# Usage:
+	# v=3
+	# increment v
+	# increment v 2
+	local -r var_name="$1"; shift
+	if [ $# -gt 0 ]; then
+		local -r c="$1"; shift
+	else
+		local -r c=1
+	fi
+	set_variable "${var_name}" "$((${var_name}+c))"
+}
+
+function decrement {
+	# Similar to increment
+	local -r var_name="$1"; shift
+	if [ $# -gt 0 ]; then
+		local -r c="$1"; shift
+	else
+		local -r c=1
+	fi
+	set_variable "${var_name}" "$((${var_name}-c))"
+}
+
+
 function are_same {
 	diff "$1" "$2" > /dev/null 2>&1
 }
@@ -46,13 +79,33 @@ function recreate_dir {
 	done
 }
 
-function _sort {
-	sort_command=$(which -a "sort" | grep -iv "windows" | sed -n 1p)
-	if [ -z "${sort_command}" ] ; then
-		sort_command="cat"
-	fi
-	"${sort_command}" "$@"
+
+function get_sort_command {
+	which -a "sort" | grep -iv "windows" | sed -n 1p
 }
+
+function _sort {
+	local sort_command
+	sort_command="$(get_sort_command)"
+	readonly sort_command
+	if [ -n "${sort_command}" ] ; then
+		"${sort_command}" "$@"
+	else
+		cat "$@"
+	fi
+}
+
+function unified_sort {
+	local sort_command
+	sort_command="$(get_sort_command)"
+	readonly sort_command
+	if [ -n "${sort_command}" ] ; then
+		"${sort_command}" -u "$@"
+	else
+		cat "$@"
+	fi
+}
+
 
 function sensitive {
 	"$@"
@@ -85,7 +138,7 @@ function is_web {
 
 function cecho {
 	color="$1"; shift
-	echo "$@" | python "${INTERNALS}/colored_cat.py" "${color}"
+	echo "$@" | "${PYTHON}" "${INTERNALS}/colored_cat.py" "${color}"
 }
 
 #colored errcho
@@ -284,12 +337,19 @@ WARNING_TEXT_PATTERN_FOR_CPP="warning:"
 WARNING_TEXT_PATTERN_FOR_PAS="Warning:"
 WARNING_TEXT_PATTERN_FOR_JAVA="warning:"
 
+
+MAKEFILE_COMPILE_OUTPUTS_LIST_TARGET="compile_outputs_list"
+
+function makefile_compile_outputs_list {
+	local make_dir="$1"; shift
+	make --quiet -C "${make_dir}" "${MAKEFILE_COMPILE_OUTPUTS_LIST_TARGET}"
+}
+
 function build_with_make {
 	local make_dir="$1"; shift
 	make -j4 -C "${make_dir}" || return $?
 	if variable_exists "WARN_FILE"; then
-		local compile_outputs_list_target="compile_outputs_list"
-		if compile_outputs_list=$(make --quiet -C "${make_dir}" "${compile_outputs_list_target}"); then
+		if compile_outputs_list=$(makefile_compile_outputs_list "${make_dir}"); then
 			for compile_output in ${compile_outputs_list}; do
 				if [[ "${compile_output}" == *.cpp.* ]] || [[ "${compile_output}" == *.cc.* ]]; then
 					local warning_text_pattern="${WARNING_TEXT_PATTERN_FOR_CPP}"
@@ -308,7 +368,7 @@ function build_with_make {
 				fi
 			done
 		else
-			echo "Makefile does not have target '${compile_outputs_list_target}'." >> "${WARN_FILE}"
+			echo "Makefile in '${make_dir}' does not have target '${MAKEFILE_COMPILE_OUTPUTS_LIST_TARGET}'." >> "${WARN_FILE}"
 		fi
 	fi	
 
@@ -330,6 +390,20 @@ function hspace {
 }
 
 
+function decorate_lines {
+	local -r prefix="$1"; shift
+	if [ $# -ge 1 ]; then
+		local -r suffix="$1"; shift
+	else
+		local -r suffix=""
+	fi
+	local x
+	while read -r x; do
+		printf '%s%s%s\n' "${prefix}" "${x}" "${suffix}"
+	done
+}
+
+
 function check_any_type_file_exists {
 	test_flag="$1"; shift
 	the_problem="$1"; shift
@@ -348,7 +422,7 @@ function check_any_type_file_exists {
 	fi
 	
 	if [ ! "$test_flag" "${file_path}" ]; then
-		errcho -n "${error_prefix}"
+		errcho -ne "${error_prefix}"
 		errcho "${file_title} '$(basename "${file_path}")' ${the_problem}."
 		errcho "Given address: '${file_path}'"
 		return 4
@@ -462,4 +536,70 @@ function argument_parser {
 
 		shift "${shifts}"
 	done
+}
+
+
+# Prepares the environment for bash completion
+# arguments should be in the form:
+# <bc_index> <bc_cursor_offset> <arguments...>
+# It sets these variables:
+#  shifts: You should run "shift ${shifts}" if you want to parse the arguments.
+#  bc_index: Index of the token on which the cursor is (1-based).
+#  bc_cursor_offset: Location (offset) of the cursor on the current token (0-based).
+#  bc_current_token: The token on which the cursor is (possibly empty).
+#  bc_current_token_prefix: The part of the current token which is before the cursor.
+# Example:
+#  setup_bash_completion 1 2 param1 param2
+# Result:
+#  shifts=2, bc_index=1, bc_cursor_offset=2,
+#  bc_current_token=param1, bc_current_token_prefix=pa
+function setup_bash_completion {
+	function add_space_all {
+		local tmp
+		while read -r tmp; do
+			printf '%s \n' "${tmp}"
+		done
+	}
+
+	function add_space_options {
+		local tmp
+		while read -r tmp; do
+			if [[ ${tmp} != *= ]]; then
+				printf '%s \n' "${tmp}"
+			else
+				printf '%s\n' "${tmp}"
+			fi
+		done
+	}
+
+	function fix_file_endings {
+		local tmp
+		while read -r tmp; do
+			if [ -d "${tmp}" ]; then
+				printf '%s/\n' "${tmp}"
+			else
+				printf '%s \n' "${tmp}"
+			fi
+		done
+	}
+
+	function complete_with_files {
+		compgen -f -- "$1" | unified_sort | fix_file_endings || true
+	}
+
+	[ $# -gt 1 ] || exit 0
+
+	shifts=0
+	bc_index="$1"; shift; increment shifts
+	[ ${bc_index} -gt 0 ] || exit 0
+
+	readonly bc_cursor_offset="$1"; shift; increment shifts
+	[ ${bc_cursor_offset} -ge 0 ] || exit 0
+
+	if [ "${bc_index}" -le $# ]; then
+		readonly bc_current_token="${!bc_index}"
+	else
+		readonly bc_current_token=""
+	fi
+	readonly bc_current_token_prefix="${bc_current_token:0:${bc_cursor_offset}}"
 }

@@ -1,7 +1,7 @@
 import sys
 import os
 
-from util import load_json
+from util import load_json, bool2bash
 
 
 def navigate_json(data, path, json_file_name):
@@ -17,7 +17,7 @@ def navigate_json(data, path, json_file_name):
                 raise KeyError
         except (KeyError, IndexError):
             sys.stderr.write("Requested key '%s' not found in '%s'\n" % (path, os.path.basename(json_file_name)))
-            exit(4)
+            sys.exit(4)
     return data
 
 
@@ -42,6 +42,6 @@ if __name__ == '__main__':
         for item in result:
             print(item)
     elif isinstance(result, bool):
-        print("true" if result else "false")
+        print(bool2bash(result))
     else:
         print(result)
