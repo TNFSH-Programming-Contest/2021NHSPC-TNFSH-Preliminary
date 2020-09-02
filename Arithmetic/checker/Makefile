@@ -9,7 +9,7 @@ clean:
 	rm -f *.exe
 
 %.exe: %.cpp testlib.h
-	g++ -std=gnu++1y -Wall -Wextra -O2 $< -o $@
+	g++ -DEVAL -std=gnu++14 -O2 -pipe -static -s $< -o $@
 
 compile_outputs_list:
 	@echo $(COMPILE_OUTPUTS)
