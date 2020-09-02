@@ -1,10 +1,10 @@
 \documentclass[a4paper]{article}
 
 
-\def \problemLabel {$if(problemLabel)$$problemLabel$$else$(空白)$endif$}
-\def \problemName {$if(problemName)$$problemName$$else$(空白)$endif$}
-\def \problemId {$if(problemId)$$problemId$$else$(空白)$endif$}
-\def \contestName {$if(contestName)$$contestName$$else$(空白)$endif$}
+\def \problemLabel {$if(problem_label)$$problem_label$$else$(空白)$endif$}
+\def \problemName {$if(title)$$title$$else$(空白)$endif$}
+\def \problemId {$if(name)$$name$$else$(空白)$endif$}
+\def \contestName {$if(contest_name)$$contest_name$$else$(空白)$endif$}
 
 \message{label is "\problemLabel"}
 \message{name is "\problemName"}
@@ -33,11 +33,13 @@ $endif$
 \usepackage[normalem]{ulem}
 \usepackage{fontspec}
 \usepackage{fancyhdr}
+\usepackage{longtable,booktabs}
 \usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm]{geometry}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \usepackage{xeCJK}
 \setCJKmainfont[]{Noto Sans Mono CJK TC}
+%\setCJKmainfont[]{標楷體}
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
 \renewcommand{\familydefault}{\sfdefault}
