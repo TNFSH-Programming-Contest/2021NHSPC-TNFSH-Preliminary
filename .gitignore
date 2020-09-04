@@ -1,3 +1,5 @@
+*.exe
 *.zip
+__pycache__/
 logs/
 sandbox/
