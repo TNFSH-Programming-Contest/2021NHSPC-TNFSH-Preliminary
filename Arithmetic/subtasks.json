@@ -6,11 +6,13 @@
         "samples": {
             "index": 0,
             "score": 0,
+            "text": "範例輸入輸出",
             "validators": []
         },
         "a0": {
             "index": 1,
             "score": 20,
+            "text": "$A = 0$、$1 \\leq B \\leq 10^{4}$",
             "validators": [
                 "validator-2.cpp"
             ]
@@ -18,6 +20,7 @@
         "1e4": {
             "index": 2,
             "score": 30,
+            "text": "$0 \\leq A, B \\leq 10^{4}$",
             "validators": [
                 "validator-3.cpp"
             ]
@@ -25,6 +28,7 @@
         "all": {
             "index": 3,
             "score": 50,
+            "text": "無額外限制",
             "validators": []
         }
     }

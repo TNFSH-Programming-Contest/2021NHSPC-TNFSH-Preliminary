@@ -5,6 +5,8 @@
 \def \problemName {$if(title)$$title$$else$(空白)$endif$}
 \def \problemId {$if(name)$$name$$else$(空白)$endif$}
 \def \contestName {$if(contest_name)$$contest_name$$else$(空白)$endif$}
+\def \timeLimit {$if(time_limit)$$time_limit$$else$(空白)$endif$}
+\def \memLimit {$if(memory_limit)$$memory_limit$$else$(空白)$endif$}
 
 \message{label is "\problemLabel"}
 \message{name is "\problemName"}
@@ -58,7 +60,7 @@ $endif$
 \renewcommand{\subsubsection}[1]{\noindent \textbf{\Large #1 }}
 
 \renewcommand{\section}[1]{\begin{center}
-\begin{spacing}{1.5} {\Huge \problemLabel.\problemName}  \\ Problem ID: \problemId \end{spacing}\vspace*{-0.1cm}
+\begin{spacing}{1.5} {\Huge \problemLabel.\problemName}  \\ \end{spacing} \begin{spacing}{1.0} Problem ID: \problemId \\ Time Limit: \timeLimit s \\ Memory Limit: \memLimit MiB \end{spacing}\vspace*{-0.1cm}
 \end{center}}
 
 
@@ -136,6 +138,19 @@ $endif$
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+
+\newcommand{\subtasks}{
+\begin{longtable}[]{>{\centering}p{1cm}>{\raggedleft}p{1cm}p{13cm}}
+\toprule
+編號 & 分數 & 額外限制\tabularnewline
+\midrule
+\endhead
+$for(subtasks)$
+$subtasks.index$ & $subtasks.score$ & $subtasks.text$\tabularnewline
+$endfor$
+\bottomrule
+\end{longtable}}
+
 
 
 \begin{document}
