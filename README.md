@@ -4,7 +4,7 @@
 
 | ID | gen | solution | tests | statement | validator | config |
 | --- | --- | --- | --- | --- | --- | --- |
-| A. Arithmetic | [gen](Arithmetic/gen) | [solution](Arithmetic/solution) [check](Arithmetic/solution/check.txt) | [tests](Arithmetic/tests) | [statement](Arithmetic/statement) [problem](Arithmetic/statement/index.md) | [validator](Arithmetic/validator) |[problem](Arithmetic/problem.json) [solutions](Arithmetic/solutions.json) [subtasks](Arithmetic/subtasks.json) |
+| A. Arithmetic | [gen](Arithmetic/gen) | [solution](Arithmetic/solution) [check](Arithmetic/solutions-check.txt) | [tests](Arithmetic/tests) | [statement](Arithmetic/statement) [problem](Arithmetic/statement/index.md) | [validator](Arithmetic/validator) |[problem](Arithmetic/problem.json) [solutions](Arithmetic/solutions.json) [subtasks](Arithmetic/subtasks.json) |
 
 # 操作說明
 ## 題目設定、[problem.json](Arithmetic/problem.json)

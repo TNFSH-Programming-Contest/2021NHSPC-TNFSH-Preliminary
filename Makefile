@@ -7,10 +7,13 @@ arithmetic:
 	cd Arithmetic && tps gen
 
 arithmetic-check:
-	cd Arithmetic && > check.txt
-	cd Arithmetic && tps invoke solution/ac.cpp | tee -a check.txt
-	cd Arithmetic && tps invoke solution/wa.cpp | tee -a check.txt
-	cd Arithmetic && tps invoke solution/re.cpp | tee -a check.txt
+	cd Arithmetic && > solutions-check.txt
+	cd Arithmetic && echo "ac.cpp" >> solutions-check.txt
+	cd Arithmetic && tps invoke solution/ac.cpp | tee -a solutions-check.txt
+	cd Arithmetic && echo "wa.cpp" >> solutions-check.txt
+	cd Arithmetic && tps invoke solution/wa.cpp | tee -a solutions-check.txt
+	cd Arithmetic && echo "re.cpp" >> solutions-check.txt
+	cd Arithmetic && tps invoke solution/re.cpp | tee -a solutions-check.txt
 
 merge-pdf:
 	# 在problems.pdf前加入更多題本路徑
