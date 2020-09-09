@@ -7,7 +7,7 @@ ${PYTHON} "${INTERNALS}/parseSubtask.py" "${BASE_DIR}/subtasks.json" "${BASE_DIR
 
 echo "Compiling ${CONTEST_NAME} - ${PROBLEM_LABEL}. ${PROBLEM_NAME} (${PROBLEM_ID})"
 
-pandoc --metadata-file="${BASE_DIR}/subtask-pandoc.json" --metadata-file="${BASE_DIR}/problem.json" -T "" ${STATEMENT_DIR}/index.md -o ${STATEMENT_DIR}/index.pdf --template ${BASE_DIR}/../template.tex --resource-path ${STATEMENT_DIR} -f markdown -t latex -s --pdf-engine=xelatex
+pandoc --metadata-file="${BASE_DIR}/subtask-pandoc.json" --metadata-file="${BASE_DIR}/problem.json" -M statement_path=${STATEMENT_DIR} -T "" ${STATEMENT_DIR}/index.md -o ${STATEMENT_DIR}/index.pdf --template ${BASE_DIR}/../template.tex --resource-path ${STATEMENT_DIR} -f markdown -t latex -s --pdf-engine=xelatex
 
 echo "Compile Finish"
 rm "${BASE_DIR}/subtask-pandoc.json"

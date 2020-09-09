@@ -1,7 +1,12 @@
 # 四則運算
 
-　　　　　　　　　　　　　　　　　　![](tfcis.jpg){ height=100px }  
-如果需要放圖片，如上語法，使用全形空格進行置中。  
+\begin{figure}[h]
+\centering
+\includegraphics[width=2in]{tfcis.jpg}
+\caption{圖片說明}
+\end{figure}
+
+如果需要放圖片，如上語法。  
 行末使用兩個半形空格為換行語法。  
 
 本題複製自TOJ 96。  
