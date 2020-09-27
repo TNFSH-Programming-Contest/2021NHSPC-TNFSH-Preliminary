@@ -192,7 +192,7 @@ def is_ignored(file_name):
     return has_ending(file_name, ['.exe', '.class', '~', '.compile.out'])
 
 def get_list_of_files(directory):
-    return list(os.listdir(directory))
+    return list(os.listdir(directory)) if os.path.exists(directory) else []
 
 
 def verify_problem():
