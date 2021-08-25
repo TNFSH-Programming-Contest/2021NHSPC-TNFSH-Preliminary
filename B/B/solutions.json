@@ -1,0 +1,11 @@
+{
+	"ac.cpp": {
+		"verdict": "model_solution"
+	},
+	"wa.cpp": {
+		"verdict": "partially_correct"
+	},
+	"re.cpp": {
+		"verdict": "partially_correct"
+	}
+}
