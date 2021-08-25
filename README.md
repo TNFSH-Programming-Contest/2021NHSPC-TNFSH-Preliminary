@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TPS範例題目
 
 ## Quick Links
@@ -107,3 +108,14 @@ gen norm -1000000000 1000000000 jvnyj
  - problem.json: 題目設定，包含時限及CMS設定
  - solutions.json: 標程設定，用以產生輸出檔的標程參數為 `"verdict": "model_solution"`
  - subtasks.json: 子任務分數設定
+=======
+# 2021NHSPC-TNFSH-Preliminary
+110學年度資訊學科能力競賽臺南一中校內初選
+
+* A. 偽區間中位數
+* B. 國中會考分發
+* C. 神秘的遊戲
+* D. 初選ㄉ中等題
+* E. 電阻DAG
+* F. 最小生成數
+>>>>>>> 2fa3066d8a33afef505ea536f5d7f2801271fb22
