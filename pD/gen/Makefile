@@ -1,15 +1,9 @@
-SOURCES := $(wildcard *.cpp)
-EXECUTABLES := $(SOURCES:%.cpp=%.exe)
+TARGET = genmain.py
 
 .PHONY: all clean
 
-all: $(EXECUTABLES)
+all:
+	python genmain.py
 
 clean:
-	rm -f *.exe
-
-%.exe: %.cpp testlib.h
-	g++ -DEVAL -std=gnu++14 -O2 -pipe -static -s $< -o $@
-
-compile_outputs_list:
-	@echo $(COMPILE_OUTPUTS)
+	rm -rf tests
