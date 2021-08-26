@@ -3,3 +3,18 @@
 __pycache__/
 logs/
 sandbox/
+
+# 題本定稿時才加入版本控制
+pA/statement/index.pdf
+pB/statement/index.pdf
+pC/statement/index.pdf
+pD/statement/index.pdf
+pE/statement/index.pdf
+pF/statement/index.pdf
+
+# 測資定稿時才加入版本控制
+pA/tests/
+pC/tests/
+pD/tests/
+pE/tests/
+pF/tests/
