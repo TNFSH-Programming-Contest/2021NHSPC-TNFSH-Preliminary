@@ -1,4 +1,5 @@
 *.exe
+*.o
 *.zip
 __pycache__/
 logs/
