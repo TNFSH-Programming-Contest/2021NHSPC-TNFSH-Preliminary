@@ -8,7 +8,7 @@ all: $(EXECUTABLES)
 clean:
 	rm -f *.exe
 
-%.exe: %.cpp testlib.h
+%.exe: %.cpp
 	g++ -DEVAL -std=gnu++14 -O2 -pipe -static -s $< -o $@
 
 compile_outputs_list:
