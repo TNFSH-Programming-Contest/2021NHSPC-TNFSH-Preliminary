@@ -3,7 +3,10 @@ TARGET = genmain.py
 .PHONY: all clean
 
 all:
-	python genmain.py
+	./genmain.py
 
 clean:
-	rm -rf tests
+	rm -rf manual
+
+compile_outputs_list:
+	@echo

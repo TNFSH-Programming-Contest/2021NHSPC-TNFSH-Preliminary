@@ -18,3 +18,7 @@ pC/tests/
 pD/tests/
 pE/tests/
 pF/tests/
+
+# Ignore test-generator generated manual testcases
+pC/gen/manual/
+pD/gen/manual/
