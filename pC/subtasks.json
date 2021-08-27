@@ -9,22 +9,34 @@
             "text": "範例輸入輸出",
             "validators": []
         },
-        "a0": {
+        "sub1": {
             "index": 1,
             "score": 20,
-            "text": "$A = 0$、$1 \\leq B \\leq 10^{4}$",
+            "text": "$Q \\leq 8000$, 不含操作 $3$",
             "validators": []
         },
-        "1e4": {
+        "sub2": {
             "index": 2,
-            "score": 30,
-            "text": "$0 \\leq A, B \\leq 10^{4}$",
+            "score": 20,
+            "text": "操作 $2$ 只有$+$",
             "validators": []
         },
-        "all": {
+		"sub3": {
             "index": 3,
-            "score": 50,
-            "text": "無額外限制",
+            "score": 20,
+            "text": "$0 \\leq x \\leq 1$, 不含操作 $3$",
+            "validators": []
+        },
+        "sub4": {
+            "index": 4,
+            "score": 20,
+            "text": "不含操作 $3$",
+            "validators": []
+        },
+		"all": {
+            "index": 5,
+            "score": 20,
+            "text": "沒有其他限制",
             "validators": []
         }
     }
