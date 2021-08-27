@@ -9,21 +9,33 @@
             "text": "範例輸入輸出",
             "validators": []
         },
-        "a0": {
+        "aieqi": {
             "index": 1,
             "score": 20,
-            "text": "$A = 0$、$1 \\leq B \\leq 10^{4}$",
+            "text": "$\\left\\{\\begin{matrix} A_i = i \\\\ X \\leq Y \\end{matrix}\\right.$",
             "validators": []
         },
-        "1e4": {
+        "10": {
             "index": 2,
-            "score": 30,
-            "text": "$0 \\leq A, B \\leq 10^{4}$",
+            "score": 20,
+            "text": "$\\left\\{\\begin{matrix} N \\leq 10 \\\\ X \\leq Y \\\\ A_i \\leq A_{i+1} \\end{matrix}\\right.$",
+            "validators": []
+        },
+        "1e6": {
+            "index": 3,
+            "score": 20,
+            "text": "$\\left\\{\\begin{matrix} N \\leq 10^6 \\\\ X \\leq Y \\\\ A_i \\leq A_{i+1} \\end{matrix}\\right.$",
+            "validators": []
+        },
+        "query": {
+            "index": 4,
+            "score": 20,
+            "text": "$A_i \\leq A_{i+1}$",
             "validators": []
         },
         "all": {
-            "index": 3,
-            "score": 50,
+            "index": 5,
+            "score": 20,
             "text": "無額外限制",
             "validators": []
         }
