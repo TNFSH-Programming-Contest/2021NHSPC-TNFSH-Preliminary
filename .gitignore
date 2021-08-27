@@ -3,6 +3,10 @@
 __pycache__/
 logs/
 sandbox/
+template.aux
+template.fdb_latexmk
+template.fls
+template.log
 
 # 題本定稿時才加入版本控制
 pA/statement/index.pdf
