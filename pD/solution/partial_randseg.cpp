@@ -1,10 +1,16 @@
+#pragma GCC optimize "O3"
 #include <bits/stdc++.h>
 using namespace std;
 
 #define int long long
 
+mt19937 mt;
+
 signed main()
 {
+    clock_t start_time = clock();
+    mt = mt19937(clock());
+    
     ios::sync_with_stdio(0);
     cin.tie(0);
     
@@ -25,21 +31,16 @@ signed main()
     }
     
     int mxs = 0;
-    set<int> pfset;
-    for (int i=0; i<n; i++)
+    while (clock() - start_time <= CLOCKS_PER_SEC * 0.85)
     {
-        auto it = pfset.lower_bound(k - prf[i]);
-        
-        if (it == pfset.begin() || *prev(it) >= (k-prf[i]))
+        int i = mt()%n, j = mt()%n;
+        if (i > j)
         {
-            mxs = max(mxs, prf[i]);
-        }
-        else
-        {
-            mxs = max(mxs, prf[i] + *prev(it));
+            swap(i, j);
         }
         
-        pfset.insert(k - prf[i]);
+        int sum = prf[j] - (i? prf[i-1]: 0);
+        mxs = max(mxs, (sum<0? sum+k: sum));
     }
     
     cout << mxs << '\n';
