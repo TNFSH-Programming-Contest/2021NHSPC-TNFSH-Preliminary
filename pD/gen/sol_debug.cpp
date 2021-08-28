@@ -5,6 +5,8 @@ using namespace std;
 
 signed main()
 {
+    clock_t start_time = clock();
+    
     ios::sync_with_stdio(0);
     cin.tie(0);
     
@@ -30,6 +32,9 @@ signed main()
         prf[i] %= k;
     }
     
+    pair<int, int> mxslen = {-1, -1};
+    map<int, int> lastMet;
+    
     int mxs = 0;
     set<int> pfset;
     for (int i=0; i<n; i++)
@@ -39,13 +44,18 @@ signed main()
         if (it == pfset.begin() || *prev(it) >= (k-prf[i]))
         {
             mxs = max(mxs, prf[i]);
+            mxslen = max(mxslen, {prf[i], -(i+1)});
         }
         else
         {
             mxs = max(mxs, prf[i] + *prev(it));
+            
+            int key = *prev(it);
+            mxslen = max(mxslen, {prf[i] + *prev(it), lastMet[key] - i});
         }
         
         pfset.insert(k - prf[i]);
+        lastMet[k - prf[i]] = i;
     }
     
     cout << mxs << '\n';
@@ -53,5 +63,7 @@ signed main()
     cerr << "N = " << n << ", ";
     cerr << "K = " << k << ", ";
     cerr << "ans = " << mxs << ", ";
-    cerr << "uniq_num = " << vset.size() << "\n";
+    cerr << "uniq_num = " << vset.size() << ", ";
+    cerr << "min_ans_len = " << -mxslen.second << ", ";
+    cerr << fixed << setprecision(2) << "time = " << (1.0 * (clock() - start_time) / CLOCKS_PER_SEC) << "\n";
 }
