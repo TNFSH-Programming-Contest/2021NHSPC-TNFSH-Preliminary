@@ -1,0 +1,22 @@
+# test_name gen_line_number gen_line_content
+0-01	  2	manual sample-01.in
+1-01	  5	gen 5000 1000 S vomrv
+1-02	  6	gen 100 50 S rever
+1-03	  7	gen 1000000 1000000 S t64nt
+1-04	  8	gen 1000000 1000000 S um32r
+1-05	  9	gen 1000000 1000000 S iegji
+2-01	 12	gen 5000 1000 P viern
+2-02	 13	gen 100 50 P rver2
+2-03	 14	gen 1000000 1000000 P yrqki
+2-04	 15	gen 1000000 1000000 P whvet
+2-05	 16	gen 1000000 1000000 P jyrcd
+3-01	 19	gen 1000 1000 B rwonv
+3-02	 20	gen 1000 1000 B mrwov
+3-03	 21	gen 100 50 B weinf
+3-04	 22	gen 1000 500 B etofg
+3-05	 23	gen 1000 1000 B eptlb
+4-01	 26	gen 1000000 1000000 B vrmre
+4-02	 27	gen 1000000 1000000 B rtujn
+4-03	 28	gen 1000000 1000000 B yn8yr
+4-04	 29	gen 1000000 1000000 B jojur
+4-05	 30	gen 1000000 1000000 B ntege

@@ -9,16 +9,22 @@
             "text": "範例輸入輸出",
             "validators": []
         },
-        "a0": {
+        "series": {
             "index": 1,
             "score": 20,
-            "text": "$A = 0$、$1 \\leq B \\leq 10^{4}$",
+            "text": "只有串聯",
             "validators": []
         },
-        "1e4": {
+        "parallel": {
             "index": 2,
             "score": 30,
-            "text": "$0 \\leq A, B \\leq 10^{4}$",
+            "text": "只有並聯",
+            "validators": []
+        },
+        "1000": {
+            "index": 3,
+            "score": 50,
+            "text": "$0<N,E\\leq1000$",
             "validators": []
         },
         "all": {
