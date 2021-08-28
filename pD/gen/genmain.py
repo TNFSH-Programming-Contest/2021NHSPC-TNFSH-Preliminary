@@ -328,14 +328,14 @@ def genMain():
 	gen.newTest('sub4', 1, gen4Segment)
 	gen.newTest('sub4', 1, gen4Segment, opt_gen=dict(K=273, v=[21, 39, 91]))
 	
-	print('[genMain]: Gen #sub5')
-	gen.newTest('sub5', 3, gen5Random)
-	gen.newTest('sub5', 1, gen5RandHill)
-	gen.newTest('sub5', 1, gen5RandHill, opt_gen=dict(th=9999/10000, nsth=.001))
-	gen.newTest('sub5', 2, gen5RandHighHill)
-	gen.newTest('sub5', 1, gen5Isolated)
-	gen.newTest('sub5', 1, gen5Segments)
-	gen.newTest('sub5', 1, gen5Segments, opt_gen=dict(v=[541]))
+	print('[genMain]: Gen #all')
+	gen.newTest('all', 3, gen5Random)
+	gen.newTest('all', 1, gen5RandHill)
+	gen.newTest('all', 1, gen5RandHill, opt_gen=dict(th=9999/10000, nsth=.001))
+	gen.newTest('all', 2, gen5RandHighHill)
+	gen.newTest('all', 1, gen5Isolated)
+	gen.newTest('all', 1, gen5Segments)
+	gen.newTest('all', 1, gen5Segments, opt_gen=dict(v=[541]))
 	
 	
 	runTest.config(test_dir='manual')
