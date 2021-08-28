@@ -12,26 +12,38 @@
         "aieqi": {
             "index": 1,
             "score": 20,
-            "text": "$\\left\\{\\begin{matrix} A_i = i \\\\ X \\leq Y \\end{matrix}\\right.$",
-            "validators": []
+            "text": "$A_i = i$ 且 $X \\leq Y$",
+            "validators": [
+                "validator-aieqi.cpp",
+                "validator-xleqy.cpp"
+            ]
         },
-        "10": {
+        "nleq10": {
             "index": 2,
             "score": 20,
-            "text": "$\\left\\{\\begin{matrix} N \\leq 10 \\\\ X \\leq Y \\\\ A_i \\leq A_{i+1} \\end{matrix}\\right.$",
-            "validators": []
+            "text": "$A_i \\leq A_{i+1}$ 且 $X \\leq Y$ 且 $N \\leq 10$",
+            "validators": [
+                "validator-increasing.cpp",
+                "validator-xleqy.cpp",
+                "validator-nleq10.cpp"
+            ]
         },
-        "1e6": {
+        "nleq1e6": {
             "index": 3,
             "score": 20,
-            "text": "$\\left\\{\\begin{matrix} N \\leq 10^6 \\\\ X \\leq Y \\\\ A_i \\leq A_{i+1} \\end{matrix}\\right.$",
-            "validators": []
+            "text": "$A_i \\leq A_{i+1}$ 且 $X \\leq Y$",
+            "validators": [
+                "validator-increasing.cpp",
+                "validator-xleqy.cpp"
+            ]
         },
         "query": {
             "index": 4,
             "score": 20,
             "text": "$A_i \\leq A_{i+1}$",
-            "validators": []
+            "validators": [
+                "validator-increasing.cpp"
+            ]
         },
         "all": {
             "index": 5,

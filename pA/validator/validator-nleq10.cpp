@@ -7,7 +7,7 @@ using namespace std;
 int main() {
 	registerValidation();
 
-	int N = inf.readInt(1, 1000000);
+	int N = inf.readInt(1, 10);
 	inf.readEoln();
 
 	inf.readInt(1, 1000000000);
@@ -20,10 +20,11 @@ int main() {
 	int Q = inf.readInt(1, 1000000);
 	inf.readEoln();
 
+	int X, Y;
 	for (int i = 0; i < Q; i++) {
-		inf.readInt(1, 1000000);
+		X = inf.readInt(1, 1000000);
 		inf.readSpace();
-		inf.readInt(1, 1000000);
+		Y = inf.readInt(1, 1000000);
 		inf.readEoln();
 	}
 

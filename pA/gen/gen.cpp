@@ -1,39 +1,71 @@
 #include <bits/stdc++.h>
+
 #include "testlib.h"
 #define endl '\n'
 using namespace std;
-char sign[] = {'+', '-', '*', '/'};
 
-void gen_task2() {
-	int signid = rnd.next(4);
-	int B = rnd.next(1, 10000);
-
-	cout << 0 << " " << sign[signid] << " " << B << endl;
-}
-
-void gen_norm(long long MIN_V, long long MAX_V) {
-	int A = rnd.next(MIN_V, MAX_V);
-	int signid = rnd.next(4);
-	int B = rnd.next(MIN_V, MAX_V);
-
-	cout << A << " " << sign[signid] << " " << B << endl;
-}
+const int _1e6 = 1000000;
 
 int main(int argc, char* argv[]) {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	registerGen(argc, argv, 1);
 
-	string MODE = argv[1];
+	int taskN = atoi(argv[1]);
+	int subtaskN = atoi(argv[2]);
 
-	if (MODE == "norm") {
-		long long MIN_V = atoll(argv[2]);
-		long long MAX_V = atoll(argv[3]);
+	int maxN = _1e6;
+	if (taskN == 2) {
+		maxN = 10;
+	}
 
-		gen_norm(MIN_V, MAX_V);
-	} else if (MODE == "task2") {
-		gen_task2();
+	int N = rnd.next(1, maxN);
+	cout << N << endl;
+
+	vector<int> v;
+	if (taskN == 1) {
+		for (int i = 0; i < N; i++) {
+			v.push_back(i + 1);
+		}
 	} else {
-		return -1;
+		int a;
+		for (int i = 0; i < N; i++) {
+			a = rnd.next(1, maxN);
+			v.push_back(a);
+		}
+		if (taskN == 5) {
+			if (subtaskN <= 3) {
+				sort(v.begin(), v.end());
+			} else {
+				sort(v.begin(), v.end(), greater<int>());
+			}
+		} else {
+			sort(v.begin(), v.end());
+		}
+	}
+
+	cout << v[0];
+	for (int i = 1; i < N; i++) {
+		cout << " " << v[i];
+	}
+	cout << endl;
+
+	int Q = rnd.next(1, _1e6);
+	cout << Q << endl;
+
+	for (int i = 0; i < Q; i++) {
+		int X = rnd.next(1, maxN - 1);
+		int Y = rnd.next(1, maxN - 1);
+		if (taskN <= 3 && X > Y) {
+			swap(X, Y);
+		}
+		if ((Y - X) % 2 != 0) {
+			if (Y > X) {
+				Y += 1;
+			} else {
+				X += 1;
+			}
+		}
+		cout << X << " " << Y << endl;
 	}
 }

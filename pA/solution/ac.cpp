@@ -1,47 +1,27 @@
 // By xiplus
 #include <bits/stdc++.h>
+#define endl '\n'
 using namespace std;
 
-void add(long long a, long long b) {
-	cout << a << " + " << b << " = " << a + b << endl;
-}
-void sub(long long a, long long b) {
-	cout << a << " - " << b << " = " << a - b << endl;
-}
-void mul(long long a, long long b) {
-	cout << a << " * " << b << " = " << a * b << endl;
-}
-void div2(long long a, long long b) {
-	cout << a << " / " << b << " = " << a / b << " ... " << a % b << endl;
-}
-typedef void (*ScriptFunction)(long long, long long);
-
-struct div_0_exception {};
-
-void error(int) {
-	throw div_0_exception();
-}
+int A[1000005];
 
 int main() {
-	if (SIG_ERR == signal(SIGFPE, error)) {
-		cerr << "failure to setup signal.";
-		return 1;
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int N;
+	cin >> N;
+	for (int i = 0; i < N; i++) {
+		cin >> A[i];
 	}
-
-	map<char, ScriptFunction> func;
-	func['+'] = add;
-	func['-'] = sub;
-	func['*'] = mul;
-	func['/'] = div2;
-
-	long long a, b;
-	char c;
-	cin >> a >> c >> b;
-	cout << fixed << setprecision(4);
-	try {
-		func[c](a, b);
-	} catch (div_0_exception) {
-		cout << "ERROR" << endl;
+	int Q, X, Y;
+	cin >> Q;
+	for (int i = 0; i < Q; i++) {
+		cin >> X >> Y;
+		if (X > Y) {
+			swap(X, Y);
+		}
+		cout << A[(X + Y) / 2] << endl;
 	}
 
 	return 0;

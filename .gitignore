@@ -17,6 +17,14 @@ pD/statement/index.pdf
 pE/statement/index.pdf
 pF/statement/index.pdf
 
+# 定稿時才加入版本控制
+pA/solutions-check.txt
+pB/solutions-check.txt
+pC/solutions-check.txt
+pD/solutions-check.txt
+pE/solutions-check.txt
+pF/solutions-check.txt
+
 # 測資定稿時才加入版本控制
 pA/tests/
 pC/tests/
