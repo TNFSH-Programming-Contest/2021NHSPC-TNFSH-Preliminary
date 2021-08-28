@@ -1,4 +1,4 @@
-# 
+# pD.Title
 給長度 $N$ 的\textbf{正整數}數列 $a$，求一區間使「區間和 $\text{mod } K$」最大。
 
 註: 先 $\text{mod } K$ 後再比較大小，即 $\displaystyle\max_{1 \leq L \leq R \leq N}{\left[\left(\sum_{i=L}^{R}{a_i}\right)\mod K\right]}$。
