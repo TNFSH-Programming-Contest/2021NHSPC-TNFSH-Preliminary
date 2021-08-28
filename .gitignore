@@ -29,7 +29,6 @@ pF/solutions-check.txt
 pA/tests/
 pC/tests/
 pD/tests/
-pE/tests/
 pF/tests/
 
 # Ignore test-generator generated manual testcases
