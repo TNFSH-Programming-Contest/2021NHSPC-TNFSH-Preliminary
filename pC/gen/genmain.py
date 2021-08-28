@@ -43,12 +43,17 @@ def genAll(genfunc):
 		Q, Qs = genfunc(**kwargs)
 		
 		assert( 1 <= Q <= 10**6 )
+		assert( len(Qs) == Q )
 		for qx, *qxv in Qs:
 			assert( qx in [1, 2, 3] )
 			if qx == 1:
+				assert( len(qxv) == 1 )
+				
 				k, = qxv
 				assert( -10000 <= k <= 10000 )
 			elif qx == 2:
+				assert( len(qxv) == 3 )
+				
 				i, op, y = qxv
 				assert( i in [1, 2] )
 				assert( op in ['+', '*'] )
