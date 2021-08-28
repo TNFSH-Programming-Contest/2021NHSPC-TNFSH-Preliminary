@@ -3,6 +3,8 @@ using namespace std;
 
 int main()
 {
+    clock_t start_time = clock();
+    
     ios::sync_with_stdio(0);
     cin.tie(0);
     
@@ -16,6 +18,8 @@ int main()
     {
         return k*ac[i] + bc[i];
     };
+    
+    map<string, int> q2map;
     
     int Q;
     cin >> Q;
@@ -49,6 +53,7 @@ int main()
             }
             
             routeLen[i]++;
+            q2map[string() + "12"[i] + op]++;
         }
         else if (qx == 3)
         {
@@ -72,7 +77,18 @@ int main()
         sumq[qx]++;
     }
     
+    double elapsedTime = (1.0 * (clock() - start_time) / CLOCKS_PER_SEC);
+    
     cerr << "Q = " << Q << ", ";
-    cerr << "sumBrute : " << sumBrute << ", ";
-    cerr << "sumqx = {" << sumq[1] << ", " << sumq[2] << ", " << sumq[3] << "}" << "\n";
+    cerr << "sumBrute = " << sumBrute << ", ";
+    
+    cerr << "q2 = {";
+    for (auto it : q2map)
+    {
+        cerr << it.first << ": " << it.second << ", ";
+    }
+    cerr << "}, ";
+    
+    cerr << "sumqx = {" << sumq[1] << ", " << sumq[2] << ", " << sumq[3] << "}, ";
+    cerr << fixed << setprecision(2) << "time = " << elapsedTime << ", "<< "\n";
 }
