@@ -1,0 +1,90 @@
+@subtask all
+manual all-00.in
+manual all-01.in
+manual all-02.in
+manual all-03.in
+manual all-04.in
+manual all-05.in
+manual all-06.in
+manual all-07.in
+manual all-08.in
+manual all-09.in
+
+@subtask sample
+manual sample-00.in
+manual sample-01.in
+manual sample-02.in
+manual sample-03.in
+
+@subtask sub1
+manual sub1-00.in
+manual sub1-01.in
+manual sub1-02.in
+manual sub1-03.in
+manual sub1-04.in
+manual sub1-05.in
+manual sub1-06.in
+
+@subtask sub2
+manual sub2-00.in
+manual sub2-01.in
+manual sub2-02.in
+manual sub2-03.in
+manual sub2-04.in
+
+@subtask sub3
+manual sub3-00.in
+manual sub3-01.in
+manual sub3-02.in
+manual sub3-03.in
+manual sub3-04.in
+
+@subtask sub4
+manual sub4-00.in
+manual sub4-01.in
+manual sub4-02.in
+manual sub4-03.in
+manual sub4-04.in
+
+@subtask sub5
+manual sub5-00.in
+manual sub5-01.in
+manual sub5-02.in
+manual sub5-03.in
+manual sub5-04.in
+
+@subtask sub6
+manual sub6-00.in
+manual sub6-01.in
+manual sub6-02.in
+manual sub6-03.in
+manual sub6-04.in
+manual sub6-05.in
+manual sub6-06.in
+manual sub6-07.in
+manual sub6-08.in
+manual sub6-09.in
+
+@subtask sub7
+manual sub7-00.in
+manual sub7-01.in
+manual sub7-02.in
+manual sub7-03.in
+manual sub7-04.in
+
+@subtask sub8
+manual sub8-00.in
+manual sub8-01.in
+manual sub8-02.in
+manual sub8-03.in
+manual sub8-04.in
+manual sub8-05.in
+manual sub8-06.in
+
+@subtask sub9
+manual sub9-00.in
+manual sub9-01.in
+manual sub9-02.in
+manual sub9-03.in
+manual sub9-04.in
+

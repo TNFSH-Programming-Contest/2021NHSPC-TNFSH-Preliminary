@@ -29,7 +29,7 @@ class TestGenerator(Generator):
 	
 	def nativeSolve(self, file):
 		solver = str(GENDIR / 'sol_debug.exe')
-		proc = subprocess.run([solver], stdin=file, capture_output=True, check=True)
+		proc = subprocess.run([solver], stdin=file, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
 		ans = proc.stdout.decode().strip()
 		
 		if proc.stderr:
@@ -92,13 +92,9 @@ def gen0C():
 
 @gen0
 def gen0D():
-	N = 5
-	K = random.randint(2, 3)
-	A = []
-	for i in range(N):
-		A.append(random.randint(-3, 3))
-	
-	return [N, K, A]
+	return [
+		10, 2, [7, 9, 1, 7, 9, 3, 3, 1, 5, 5]
+	]
 
 ############################## Gen 1 ##############################
 
@@ -128,6 +124,16 @@ def gen1B():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
+	
+	return [N, K, A]
+
+@gen1
+def gen1C():
+	N = random.randint(950, 1000)
+	K = 2
+	A = []
+	for i in range(N):
+		A.append(random.randint(-2, 2))
 	
 	return [N, K, A]
 
@@ -524,6 +530,16 @@ def gen8C():
 
 	return [N, K, A]
 
+@gen8
+def gen8D():
+	N = random.randint(int(.95 * MAXN), MAXN)
+	K = 2
+	A = [random.randint(MINA, MAXA - N)]
+	for i in range(1, N):
+		A.append(random.randint(-2, 2))
+	A.sort()
+	return [N, K, A]
+
 ############################## Gen 9 ##############################
 
 def gen9(genfunc):
@@ -621,61 +637,75 @@ def gen10E():
 	
 	return [N, K, A]
 
+@gen10
+def gen10F():
+	N = random.randint(int(.95 * MAXN), MAXN)
+	K = 2
+	A = []
+	for i in range(N):
+		A.append(random.randint(-2, 2))
+	
+	return [N, K, A]
+
 ###################################################################
 
 def main():
 	random.seed(20210829 ** 2142)
-	test_format = str(GENDIR.resolve() / 'manual' / '{subtask:0>2}-{testid:0>2}.{ext}')
+	test_format = str(GENDIR.resolve() / 'manual' / '{subtask}-{testid:0>2}.{ext}')
 
 	gen = TestGenerator()
 	gen.config(debug=False, test_format=test_format)
 	
 
-	gen.newTest("s0", 1, gen0A)
-	gen.newTest("s0", 1, gen0B)
-	gen.newTest("s0", 1, gen0C)
+	gen.newTest("sample", 1, gen0A)
+	gen.newTest("sample", 1, gen0B)
+	gen.newTest("sample", 1, gen0C)
+	gen.newTest("sample", 1, gen0D)
 	# gen.newTest(0, 10, gen0D)
 	
-	gen.newTest("s1", 2, gen1A)
-	gen.newTest("s1", 3, gen1B)
+	gen.newTest("sub1", 2, gen1A)
+	gen.newTest("sub1", 3, gen1B)
+	gen.newTest("sub1", 2, gen1C)
 	
-	gen.newTest("s2", 2, gen2A)
-	gen.newTest("s2", 3, gen2B)
+	gen.newTest("sub2", 2, gen2A)
+	gen.newTest("sub2", 3, gen2B)
 	
-	gen.newTest("s3", 2, gen3A)
-	gen.newTest("s3", 3, gen3B)
+	gen.newTest("sub3", 2, gen3A)
+	gen.newTest("sub3", 3, gen3B)
 	
-	gen.newTest("s4", 1, gen4A)
-	gen.newTest("s4", 1, gen4B)
-	gen.newTest("s4", 1, gen4C)
-	gen.newTest("s4", 1, gen4D)
-	gen.newTest("s4", 1, gen4E)
+	gen.newTest("sub4", 1, gen4A)
+	gen.newTest("sub4", 1, gen4B)
+	gen.newTest("sub4", 1, gen4C)
+	gen.newTest("sub4", 1, gen4D)
+	gen.newTest("sub4", 1, gen4E)
 	
-	gen.newTest("s5", 2, gen5A)
-	gen.newTest("s5", 3, gen5B)
+	gen.newTest("sub5", 2, gen5A)
+	gen.newTest("sub5", 3, gen5B)
 	
-	gen.newTest("s6", 1, gen6A)
-	gen.newTest("s6", 1, gen6B)
-	gen.newTest("s6", 3, gen6C)
-	gen.newTest("s6", 2, gen6D)
-	gen.newTest("s6", 3, gen6E)
+	gen.newTest("sub6", 1, gen6A)
+	gen.newTest("sub6", 1, gen6B)
+	gen.newTest("sub6", 3, gen6C)
+	gen.newTest("sub6", 2, gen6D)
+	gen.newTest("sub6", 3, gen6E)
 	
-	gen.newTest("s7", 1, gen7A)
-	gen.newTest("s7", 1, gen7B)
-	gen.newTest("s7", 3, gen7C)
+	gen.newTest("sub7", 1, gen7A)
+	gen.newTest("sub7", 1, gen7B)
+	gen.newTest("sub7", 3, gen7C)
 	
-	gen.newTest("s8", 1, gen8A)
-	gen.newTest("s8", 1, gen8B)
-	gen.newTest("s8", 3, gen8C)
+	gen.newTest("sub8", 1, gen8A)
+	gen.newTest("sub8", 1, gen8B)
+	gen.newTest("sub8", 3, gen8C)
+	gen.newTest("sub8", 2, gen8D)
 	
-	gen.newTest("s9", 2, gen9A)
-	gen.newTest("s9", 3, gen9B)
+	gen.newTest("sub9", 2, gen9A)
+	gen.newTest("sub9", 3, gen9B)
 	
-	gen.newTest("s10", 1, gen10A)
-	gen.newTest("s10", 1, gen10B)
-	gen.newTest("s10", 1, gen10C)
-	gen.newTest("s10", 2, gen10D)
-	gen.newTest("s10", 3, gen10E)
+	gen.newTest("all", 1, gen10A)
+	gen.newTest("all", 1, gen10B)
+	gen.newTest("all", 1, gen10C)
+	gen.newTest("all", 2, gen10D)
+	gen.newTest("all", 3, gen10E)
+	gen.newTest("all", 2, gen10F)
 	
 	runTest.config(test_dir=str(GENDIR.resolve() / 'manual'))
 	with open('data', 'w') as gendata:
@@ -695,8 +725,6 @@ def main():
 				gendata.write('manual {}\n'.format(inpath))
 
 			gendata.write('\n')
-
-	return
 
 if __name__ == "__main__":
 	genStart(main)
