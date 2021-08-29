@@ -3,67 +3,67 @@
         "validator.cpp"
     ],
     "subtasks": {
-        "s0": {
+        "sample": {
             "index": 0,
             "score": 0,
             "text": "範例輸入輸出",
             "validators": []
         },
-        "s1": {
+        "sub1": {
             "index": 1,
             "score": 4,
             "text": "$n \\le 10^3$",
             "validators": []
         },
-        "s2": {
+        "sub2": {
             "index": 2,
             "score": 1,
             "text": "$k = 1$",
             "validators": []
         },
-        "s3": {
+        "sub3": {
             "index": 3,
             "score": 4,
             "text": "$k = n$、保證全部元素相異",
             "validators": []
         },
-        "s4": {
+        "sub4": {
             "index": 4,
             "score": 4,
             "text": "$k = n$",
             "validators": []
         },
-        "s5": {
+        "sub5": {
             "index": 5,
             "score": 8,
             "text": "$k = 2$、保證全部元素相異",
             "validators": []
         },
-        "s6": {
+        "sub6": {
             "index": 6,
             "score": 6,
             "text": "$k = 2$",
             "validators": []
         },
-        "s7": {
+        "sub7": {
             "index": 7,
             "score": 5,
             "text": "保證序列已經排序、全部元素相異",
             "validators": []
         },
-        "s8": {
+        "sub8": {
             "index": 8,
             "score": 3,
             "text": "保證序列已經排序",
             "validators": []
         },
-        "s9": {
+        "sub9": {
             "index": 9,
             "score": 20,
             "text": "保證全部元素相異",
             "validators": []
         },
-        "s10": {
+        "all": {
             "index": 10,
             "score": 45,
             "text": "無額外限制",
