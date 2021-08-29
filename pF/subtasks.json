@@ -3,27 +3,69 @@
         "validator.cpp"
     ],
     "subtasks": {
-        "samples": {
+        "s0": {
             "index": 0,
             "score": 0,
             "text": "範例輸入輸出",
             "validators": []
         },
-        "a0": {
+        "s1": {
             "index": 1,
-            "score": 20,
-            "text": "$A = 0$、$1 \\leq B \\leq 10^{4}$",
+            "score": 4,
+            "text": "$n \\le 10^3$",
             "validators": []
         },
-        "1e4": {
+        "s2": {
             "index": 2,
-            "score": 30,
-            "text": "$0 \\leq A, B \\leq 10^{4}$",
+            "score": 1,
+            "text": "$k = 1$",
             "validators": []
         },
-        "all": {
+        "s3": {
             "index": 3,
-            "score": 50,
+            "score": 4,
+            "text": "$k = n$、保證全部元素相異",
+            "validators": []
+        },
+        "s4": {
+            "index": 4,
+            "score": 4,
+            "text": "$k = n$",
+            "validators": []
+        },
+        "s5": {
+            "index": 5,
+            "score": 8,
+            "text": "$k = 2$、保證全部元素相異",
+            "validators": []
+        },
+        "s6": {
+            "index": 6,
+            "score": 6,
+            "text": "$k = 2$",
+            "validators": []
+        },
+        "s7": {
+            "index": 7,
+            "score": 5,
+            "text": "保證序列已經排序、全部元素相異",
+            "validators": []
+        },
+        "s8": {
+            "index": 8,
+            "score": 3,
+            "text": "保證序列已經排序",
+            "validators": []
+        },
+        "s9": {
+            "index": 9,
+            "score": 20,
+            "text": "保證全部元素相異",
+            "validators": []
+        },
+        "s10": {
+            "index": 10,
+            "score": 45,
             "text": "無額外限制",
             "validators": []
         }
