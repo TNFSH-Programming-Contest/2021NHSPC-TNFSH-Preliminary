@@ -2,7 +2,7 @@
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=5in]{cover.jpg}
+\includegraphics[width=12cm]{cover.jpg}
 \caption{}
 \end{figure}
 
