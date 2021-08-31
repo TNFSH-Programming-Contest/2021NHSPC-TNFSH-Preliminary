@@ -1,4 +1,4 @@
-# 魔法傳送網路
+# 蓋歐格
 
 \begin{figure}[h]
 \centering
