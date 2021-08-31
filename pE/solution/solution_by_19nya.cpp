@@ -57,6 +57,6 @@ signed main(){
 		}
 		removed[now]=1;
 	}
-	cout<<setprecision(10)<<g[1][2]<<endl;
+	cout<<fixed<<setprecision(17)<<g[1][2]<<endl;
 	return 0;
 }
