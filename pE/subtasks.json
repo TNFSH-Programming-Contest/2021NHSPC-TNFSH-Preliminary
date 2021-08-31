@@ -13,19 +13,19 @@
             "index": 1,
             "score": 20,
             "text": "只有串聯",
-            "validators": []
+            "validators": ["validator-series.cpp"]
         },
         "parallel": {
             "index": 2,
             "score": 30,
             "text": "只有並聯",
-            "validators": []
+            "validators": ["validator-parallel.cpp"]
         },
         "1000": {
             "index": 3,
             "score": 50,
             "text": "$0<N,E\\leq1000$",
-            "validators": []
+            "validators": ["validator-ne1000.cpp"]
         },
         "all": {
             "index": 3,
