@@ -12,13 +12,13 @@
         "series": {
             "index": 1,
             "score": 20,
-            "text": "只有串聯",
+            "text": "傳送網路的組成只有情形 1 及 2",
             "validators": []
         },
         "parallel": {
             "index": 2,
             "score": 30,
-            "text": "只有並聯",
+            "text": "傳送網路的組成只有情形 1 及 3",
             "validators": []
         },
         "1000": {
