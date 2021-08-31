@@ -1,9 +1,9 @@
 {
 	"contest_name": "110學年度資訊學科能力競賽臺南一中校內初選",
 	"problem_label": "A",
-	"name": "Median",
-	"code": "Median",
-	"title": "中位數",
+	"name": "Gymnastics",
+	"code": "Gymnastics",
+	"title": "ABC體操",
 	"memory_limit": 512,
 	"time_limit": 1.0,
 	"type": "Batch",

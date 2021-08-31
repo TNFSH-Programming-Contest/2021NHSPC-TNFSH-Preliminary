@@ -61,8 +61,8 @@ necessary_files = [
 ]
 
 semi_necessary_files = [
-    os.path.join(VALIDATOR_DIR, 'testlib.h'),
-    os.path.join(GEN_DIR, 'testlib.h'),
+    # os.path.join(VALIDATOR_DIR, 'testlib.h'),
+    # os.path.join(GEN_DIR, 'testlib.h'),
 ]
 
 if HAS_GRADER:
@@ -227,8 +227,8 @@ def verify_problem():
         except subprocess.CalledProcessError:
             warning('could not get git remote url for "{}"'.format(git_remote_name))
             return
-        if prob_name != git_main_remote_name:
-            warning('problem name and git project name are not the same')
+        # if prob_name != git_main_remote_name:
+            # warning('problem name and git project name are not the same')
 
     check_problem_name(problem['name'])
 

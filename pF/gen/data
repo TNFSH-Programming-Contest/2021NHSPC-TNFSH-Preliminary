@@ -1,50 +1,90 @@
-@subtask samples
-manual sample-01.in
-
-@subtask a0
-gen task2 qutxm
-gen task2 iqsds
-gen task2 qsvsu
-gen task2 entmw
-gen task2 pwcpr
-gen task2 tvgso
-gen task2 ulads
-gen task2 sxrfu
-gen task2 yhuhq
-gen task2 enihw
-gen task2 zhton
-gen task2 jhfof
-gen task2 shvex
-
-@subtask 1e4
-gen norm 0 10000 csizh
-gen norm 0 10000 xtqcy
-gen norm 0 10000 ilhti
-gen norm 0 10000 bhsud
-gen norm 0 10000 nmknb
-gen norm 0 10000 wgryr
-gen norm 0 10000 khjyf
-gen norm 0 10000 utnbp
-gen norm 0 10000 bowkf
-gen norm 0 10000 jecqs
-gen norm 0 10000 hgcnm
-gen norm 0 10000 ubpto
-gen norm 0 10000 bzuuu
-gen norm 0 10000 mnmer
-
 @subtask all
+manual all-00.in
 manual all-01.in
-gen norm -1000000000 1000000000 jvnyj
-gen norm -1000000000 1000000000 mtkbd
-gen norm -1000000000 1000000000 cihky
-gen norm -1000000000 1000000000 xnvey
-gen norm -1000000000 1000000000 hsrhk
-gen norm -1000000000 1000000000 dbgtb
-gen norm -1000000000 1000000000 qfsov
-gen norm -1000000000 1000000000 jskbd
-gen norm -1000000000 1000000000 oxwpy
-gen norm -1000000000 1000000000 ljnss
-gen norm -1000000000 1000000000 kzdqk
-gen norm -1000000000 1000000000 mvijw
-gen norm -1000000000 1000000000 dzzwm
-gen norm -1000000000 1000000000 wfbej
+manual all-02.in
+manual all-03.in
+manual all-04.in
+manual all-05.in
+manual all-06.in
+manual all-07.in
+manual all-08.in
+manual all-09.in
+
+@subtask sample
+manual sample-00.in
+manual sample-01.in
+manual sample-02.in
+manual sample-03.in
+
+@subtask sub1
+manual sub1-00.in
+manual sub1-01.in
+manual sub1-02.in
+manual sub1-03.in
+manual sub1-04.in
+manual sub1-05.in
+manual sub1-06.in
+
+@subtask sub2
+manual sub2-00.in
+manual sub2-01.in
+manual sub2-02.in
+manual sub2-03.in
+manual sub2-04.in
+
+@subtask sub3
+manual sub3-00.in
+manual sub3-01.in
+manual sub3-02.in
+manual sub3-03.in
+manual sub3-04.in
+
+@subtask sub4
+manual sub4-00.in
+manual sub4-01.in
+manual sub4-02.in
+manual sub4-03.in
+manual sub4-04.in
+
+@subtask sub5
+manual sub5-00.in
+manual sub5-01.in
+manual sub5-02.in
+manual sub5-03.in
+manual sub5-04.in
+
+@subtask sub6
+manual sub6-00.in
+manual sub6-01.in
+manual sub6-02.in
+manual sub6-03.in
+manual sub6-04.in
+manual sub6-05.in
+manual sub6-06.in
+manual sub6-07.in
+manual sub6-08.in
+manual sub6-09.in
+
+@subtask sub7
+manual sub7-00.in
+manual sub7-01.in
+manual sub7-02.in
+manual sub7-03.in
+manual sub7-04.in
+
+@subtask sub8
+manual sub8-00.in
+manual sub8-01.in
+manual sub8-02.in
+manual sub8-03.in
+manual sub8-04.in
+manual sub8-05.in
+manual sub8-06.in
+
+@subtask sub9
+manual sub9-00.in
+manual sub9-01.in
+manual sub9-02.in
+manual sub9-03.in
+manual sub9-04.in
+

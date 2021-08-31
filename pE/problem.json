@@ -1,9 +1,9 @@
 {
 	"contest_name": "110學年度資訊學科能力競賽臺南一中校內初選",
 	"problem_label": "E",
-	"name": "Resistance",
-	"code": "Resistance",
-	"title": "電阻",
+	"name": "Georg",
+	"code": "Georg",
+	"title": "蓋歐格",
 	"memory_limit": 512,
 	"time_limit": 5.0,
 	"type": "Batch",

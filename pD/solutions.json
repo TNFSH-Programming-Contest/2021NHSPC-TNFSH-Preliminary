@@ -1,5 +1,14 @@
 {
 	"full.cpp": {
 		"verdict": "model_solution"
+	},
+	"full_int.cpp": {
+		"verdict": "correct"
+	},
+	"partial_randseg.cpp": {
+		"verdict": "partially_correct"
+	},
+	"partial_randseg_naive.cpp": {
+		"verdict": "partially_correct"
 	}
 }
