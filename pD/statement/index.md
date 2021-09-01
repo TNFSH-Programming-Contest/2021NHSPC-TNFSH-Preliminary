@@ -3,7 +3,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{cover.jpg}
-\caption{\textcolor{red}{<圖片說明>}}
+\caption{在你寫code的期間，花子越來越餓，你可能得快點AC.....}
 \end{figure}
 
 自稱為半龍人的貪吃少女 --- 花子，實際上卻是魔界四大公爵-龍族法夫納家的下任家主！因為厭倦了家中殘酷的訓練還有一成不變的食物，於是離家出走來到了人類源藏開的魔獸寵物店當起了店員。
