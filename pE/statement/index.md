@@ -3,7 +3,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{cover.jpg}
-\caption{利姆路等人正在討論使用傳送魔法來傳送軍隊的方法}
+\caption{利姆路等人正在討論使用傳送魔法來傳送軍隊的方法，出自動畫《關於我轉生變成史萊姆這檔事 第二季》}
 \end{figure}
 
 為了阻止克雷曼的陰謀，朱拉・坦派斯特聯邦國決定派出大軍，然而要將龐大的軍隊快速地送到目的地可不是一件簡單的事。  

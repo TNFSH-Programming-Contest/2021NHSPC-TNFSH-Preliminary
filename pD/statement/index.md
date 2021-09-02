@@ -3,7 +3,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{cover.jpg}
-\caption{風花向遊客解說海洋生物}
+\caption{風花向遊客解說海洋生物，出自動畫《白沙的Aquatope》}
 \end{figure}
 
 GAMAGAMA水族館面臨即將停業的危機，代理館長空空琉決定推出觸摸池的活動來吸引遊客，由前偶像團體成員的風花擔任導覽員。  
