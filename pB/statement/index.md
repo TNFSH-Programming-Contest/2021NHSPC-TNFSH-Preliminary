@@ -25,7 +25,7 @@
 ## 輸入限制
  - $1 \leq n \leq 200000$
  - $5 \leq m \leq 1000$
- - $1 \leq k \leq N$
+ - $1 \leq k \leq n$
 
 ## 子任務
 \subtasks
