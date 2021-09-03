@@ -350,7 +350,7 @@ def genMain():
 			caseMap[subtask].append(str(inpath))
 		
 		print(caseMap)
-		for subtask in caseMap:
+		for subtask in ['samples', 'sub1', 'sub2', 'sub3', 'sub4', 'all']:
 			gendata.write('@subtask {}\n'.format(subtask))
 			for inpath in caseMap[subtask]:
 				gendata.write('manual {}\n'.format(inpath))
