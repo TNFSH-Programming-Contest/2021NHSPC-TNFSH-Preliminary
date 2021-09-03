@@ -3,7 +3,7 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{cover.jpg}
-\caption{}
+\caption{唐可可在上課打瞌睡，出自動畫《Love Live! Superstar!!》}
 \end{figure}
 
 獨自一人從上海前來日本成為學園偶像的唐可可，在路上偶然聽到了同校同學澀谷香音的美妙歌聲，情不自禁的用中文向香音說到「太好聽了吧！妳唱歌真的好好聽啊，簡直就是天籟！我剛才聽到妳唱歌了。我們以後⼀起唱好不好？⼀起唱！⼀起做學園偶像！」
