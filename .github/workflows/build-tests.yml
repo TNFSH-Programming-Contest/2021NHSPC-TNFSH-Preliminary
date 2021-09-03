@@ -47,6 +47,18 @@ jobs:
               - 'pB/problem.json'
               - 'pB/solutions.json'
               - 'pB/subtasks.json'
+            pC:
+              - 'pC/gen/**'
+              - 'pC/solution/**'
+              - 'pC/problem.json'
+              - 'pC/solutions.json'
+              - 'pC/subtasks.json'
+            pD:
+              - 'pD/gen/**'
+              - 'pD/solution/**'
+              - 'pD/problem.json'
+              - 'pD/solutions.json'
+              - 'pD/subtasks.json'
             pE:
               - 'pE/gen/**'
               - 'pE/solution/**'
@@ -73,6 +85,26 @@ jobs:
       - name: Build pB
         if: steps.changes.outputs.pB == 'true'
         working-directory: pB
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+      
+      - name: Build pC
+        if: steps.changes.outputs.pC == 'true'
+        working-directory: pC
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+      
+      - name: Build pD
+        if: steps.changes.outputs.pD == 'true'
+        working-directory: pD
         run: |
           tps gen -s
           git add tests/*.in
