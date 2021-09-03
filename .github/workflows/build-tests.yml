@@ -61,32 +61,32 @@ jobs:
         working-directory: pA
         run: |
           tps gen -s
-          git add pA/tests/*.in
-          git add pA/tests/*.out
+          git add tests/*.in
+          git add tests/*.out
 
       - name: Build pB
         if: steps.changes.outputs.pB == 'true'
         working-directory: pB
         run: |
           tps gen -s
-          git add pB/tests/*.in
-          git add pB/tests/*.out
+          git add tests/*.in
+          git add tests/*.out
 
       - name: Build pE
         if: steps.changes.outputs.pE == 'true'
         working-directory: pE
         run: |
           tps gen -s --no-gen
-          git add pE/tests/*.in
-          git add pE/tests/*.out
+          git add tests/*.in
+          git add tests/*.out
 
       - name: Build pF
         if: steps.changes.outputs.pF == 'true'
         working-directory: pF
         run: |
           tps gen -s
-          git add pF/tests/*.in
-          git add pF/tests/*.out
+          git add tests/*.in
+          git add tests/*.out
 
       - name: Commit tests
         run: |
