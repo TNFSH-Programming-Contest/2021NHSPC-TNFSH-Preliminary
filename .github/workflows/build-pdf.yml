@@ -1,0 +1,175 @@
+name: Build pdf
+
+on:
+  push:
+    paths:
+      - '.github/workflows/build-pdf.yml'
+      - '*/scripts/statement.sh'
+      - '*/statement/*.jpg'
+      - '*/statement/index.md'
+      - '*/problem.json'
+      - '*/subtasks.json'
+      - 'template.tex'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install tps
+        run: |
+          git clone https://github.com/ioi-2017/tps.git
+          cd tps && sudo ./install-tps.sh
+
+      - name: Install pandoc
+        run: |
+          wget https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb
+          sudo dpkg -i pandoc-2.10.1-1-amd64.deb
+
+      - name: Install xetex
+        run: |
+          sudo add-apt-repository ppa:jonathonf/texlive-2019
+          sudo apt-get update
+          sudo apt-get install texlive-xetex
+
+      - name: Install fonts
+        run: |
+          sudo mkdir -p /usr/share/fonts/opentype/noto
+          wget -nv https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc.zip
+          unzip NotoSansCJK-Regular.ttc.zip -d NotoSansCJK-Regular
+          ls -al NotoSansCJK-Regular
+          sudo cp NotoSansCJK-Regular/NotoSansCJK-Regular.ttc /usr/share/fonts/opentype/noto
+          wget -nv https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJK-Bold.ttc.zip
+          unzip NotoSansCJK-Bold.ttc.zip -d NotoSansCJK-Bold
+          ls -al NotoSansCJK-Bold
+          sudo cp NotoSansCJK-Bold/NotoSansCJK-Bold.ttc /usr/share/fonts/opentype/noto
+          ls -al /usr/share/fonts/opentype/noto
+          sudo fc-cache -f -v
+
+      - name: Install pdfunite
+        run: |
+          sudo apt-get install poppler-utils
+
+      - name: Check environment
+        working-directory: pA
+        run: |
+          lsb_release -a
+          echo ""
+          pandoc -v
+          echo ""
+          xetex -v
+          echo ""
+          tps || :;
+          echo ""
+          fc-list | grep "Noto Sans Mono CJK TC" || :;
+          echo ""
+          pdfunite -v
+
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            shared:
+              - '.github/workflows/build-pdf.yml'
+              - 'template.tex'
+            pA:
+              - 'pA/scripts/statement.sh'
+              - 'pA/statement/*.jpg'
+              - 'pA/statement/index.md'
+              - 'pA/problem.json'
+              - 'pA/subtasks.json'
+            pB:
+              - 'pB/scripts/statement.sh'
+              - 'pB/statement/*.jpg'
+              - 'pB/statement/index.md'
+              - 'pB/problem.json'
+              - 'pB/subtasks.json'
+            pC:
+              - 'pC/scripts/statement.sh'
+              - 'pC/statement/*.jpg'
+              - 'pC/statement/index.md'
+              - 'pC/problem.json'
+              - 'pC/subtasks.json'
+            pD:
+              - 'pD/scripts/statement.sh'
+              - 'pD/statement/*.jpg'
+              - 'pD/statement/index.md'
+              - 'pD/problem.json'
+              - 'pD/subtasks.json'
+            pE:
+              - 'pE/scripts/statement.sh'
+              - 'pE/statement/*.jpg'
+              - 'pE/statement/index.md'
+              - 'pE/problem.json'
+              - 'pE/subtasks.json'
+            pF:
+              - 'pF/scripts/statement.sh'
+              - 'pF/statement/*.jpg'
+              - 'pF/statement/index.md'
+              - 'pF/problem.json'
+              - 'pF/subtasks.json'
+
+      - name: Build pA
+        if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.shared == 'true'
+        working-directory: pA
+        run: |
+          tps statement
+
+      - name: Build pB
+        if: steps.changes.outputs.pB == 'true' || steps.changes.outputs.shared == 'true'
+        working-directory: pB
+        run: |
+          tps statement
+
+      - name: Build pC
+        if: steps.changes.outputs.pC == 'true' || steps.changes.outputs.shared == 'true'
+        working-directory: pC
+        run: |
+          tps statement
+
+      - name: Build pD
+        if: steps.changes.outputs.pD == 'true' || steps.changes.outputs.shared == 'true'
+        working-directory: pD
+        run: |
+          tps statement
+
+      - name: Build pE
+        if: steps.changes.outputs.pE == 'true' || steps.changes.outputs.shared == 'true'
+        working-directory: pE
+        run: |
+          tps statement
+
+      - name: Build pF
+        if: steps.changes.outputs.pF == 'true' || steps.changes.outputs.shared == 'true'
+        working-directory: pF
+        run: |
+          tps statement
+
+      - name: Merge pdfs
+        if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.pB == 'true' || steps.changes.outputs.pC == 'true' || steps.changes.outputs.pD == 'true' || steps.changes.outputs.pE == 'true' || steps.changes.outputs.pF == 'true' || steps.changes.outputs.shared == 'true'
+        run: |
+          mkdir -p pA/attachments
+          pdfunite pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pA/attachments/problems.pdf
+
+      - name: Commit pdf
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git status
+          git add pA/statement/index.pdf
+          git add pB/statement/index.pdf
+          git add pC/statement/index.pdf
+          git add pD/statement/index.pdf
+          git add pE/statement/index.pdf
+          git add pF/statement/index.pdf
+          git add pA/attachments/problems.pdf
+          git diff-index --quiet HEAD -- || git commit -m "Build pdf"
+
+      - name: Push to GitHub
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
