@@ -105,6 +105,7 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          git restore gen/data
       
       - name: Build pD
         if: ${{steps.changes.outputs.pD == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pD') }}
@@ -115,6 +116,7 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          git restore gen/data
 
       - name: Build pE
         if: ${{steps.changes.outputs.pE == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pE') }}
