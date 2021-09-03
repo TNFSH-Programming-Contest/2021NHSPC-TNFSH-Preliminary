@@ -3,7 +3,6 @@ name: Build pdf
 on:
   push:
     paths:
-      - '.github/workflows/build-pdf.yml'
       - '*/scripts/statement.sh'
       - '*/statement/*.jpg'
       - '*/statement/index.md'
@@ -73,9 +72,10 @@ jobs:
         id: changes
         with:
           filters: |
-            shared:
-              - '.github/workflows/build-pdf.yml'
+            template:
               - 'template.tex'
+            merge:
+              - 'cover.pdf'
             pA:
               - 'pA/scripts/statement.sh'
               - 'pA/statement/*.jpg'
@@ -114,43 +114,43 @@ jobs:
               - 'pF/subtasks.json'
 
       - name: Build pA
-        if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.shared == 'true'
+        if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.template == 'true'
         working-directory: pA
         run: |
           tps statement
 
       - name: Build pB
-        if: steps.changes.outputs.pB == 'true' || steps.changes.outputs.shared == 'true'
+        if: steps.changes.outputs.pB == 'true' || steps.changes.outputs.template == 'true'
         working-directory: pB
         run: |
           tps statement
 
       - name: Build pC
-        if: steps.changes.outputs.pC == 'true' || steps.changes.outputs.shared == 'true'
+        if: steps.changes.outputs.pC == 'true' || steps.changes.outputs.template == 'true'
         working-directory: pC
         run: |
           tps statement
 
       - name: Build pD
-        if: steps.changes.outputs.pD == 'true' || steps.changes.outputs.shared == 'true'
+        if: steps.changes.outputs.pD == 'true' || steps.changes.outputs.template == 'true'
         working-directory: pD
         run: |
           tps statement
 
       - name: Build pE
-        if: steps.changes.outputs.pE == 'true' || steps.changes.outputs.shared == 'true'
+        if: steps.changes.outputs.pE == 'true' || steps.changes.outputs.template == 'true'
         working-directory: pE
         run: |
           tps statement
 
       - name: Build pF
-        if: steps.changes.outputs.pF == 'true' || steps.changes.outputs.shared == 'true'
+        if: steps.changes.outputs.pF == 'true' || steps.changes.outputs.template == 'true'
         working-directory: pF
         run: |
           tps statement
 
       - name: Merge pdfs
-        if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.pB == 'true' || steps.changes.outputs.pC == 'true' || steps.changes.outputs.pD == 'true' || steps.changes.outputs.pE == 'true' || steps.changes.outputs.pF == 'true' || steps.changes.outputs.shared == 'true'
+        if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.pB == 'true' || steps.changes.outputs.pC == 'true' || steps.changes.outputs.pD == 'true' || steps.changes.outputs.pE == 'true' || steps.changes.outputs.pF == 'true' || steps.changes.outputs.template == 'true' || steps.changes.outputs.merge == 'true'
         run: |
           mkdir -p pA/attachments
           pdfunite cover.pdf pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pA/attachments/problems.pdf
