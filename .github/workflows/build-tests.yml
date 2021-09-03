@@ -17,6 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install dos2unix
+        run: |
+          sudo apt-get install dos2unix
+
       - name: Setup git
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -63,6 +67,8 @@ jobs:
           tps gen -s
           git add tests/*.in
           git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
 
       - name: Build pB
         if: steps.changes.outputs.pB == 'true'
@@ -71,6 +77,8 @@ jobs:
           tps gen -s
           git add tests/*.in
           git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
 
       - name: Build pE
         if: steps.changes.outputs.pE == 'true'
@@ -79,6 +87,8 @@ jobs:
           tps gen -s --no-gen
           git add tests/*.in
           git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
 
       - name: Build pF
         if: steps.changes.outputs.pF == 'true'
@@ -87,6 +97,8 @@ jobs:
           tps gen -s
           git add tests/*.in
           git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
 
       - name: Commit tests
         run: |
