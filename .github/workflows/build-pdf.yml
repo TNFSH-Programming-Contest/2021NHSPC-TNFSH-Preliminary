@@ -9,6 +9,7 @@ on:
       - '*/statement/index.md'
       - '*/problem.json'
       - '*/subtasks.json'
+      - 'cover.pdf'
       - 'template.tex'
   workflow_dispatch:
 
@@ -152,7 +153,7 @@ jobs:
         if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.pB == 'true' || steps.changes.outputs.pC == 'true' || steps.changes.outputs.pD == 'true' || steps.changes.outputs.pE == 'true' || steps.changes.outputs.pF == 'true' || steps.changes.outputs.shared == 'true'
         run: |
           mkdir -p pA/attachments
-          pdfunite pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pA/attachments/problems.pdf
+          pdfunite cover.pdf pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pA/attachments/problems.pdf
 
       - name: Commit pdf
         run: |
