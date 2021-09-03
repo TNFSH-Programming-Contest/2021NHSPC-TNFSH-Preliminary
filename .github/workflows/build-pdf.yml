@@ -49,6 +49,10 @@ jobs:
           ls -al /usr/share/fonts/opentype/noto
           sudo fc-cache -f -v
 
+      - name: Install pdfunite
+        run: |
+          sudo apt-get install poppler-utils
+
       - name: Check environment
         working-directory: pA
         run: |
@@ -61,6 +65,8 @@ jobs:
           tps || :;
           echo ""
           fc-list | grep "Noto Sans Mono CJK TC" || :;
+          echo ""
+          pdfunite -v
 
       - uses: dorny/paths-filter@v2
         id: changes
@@ -142,6 +148,12 @@ jobs:
         run: |
           tps statement
 
+      - name: Merge pdfs
+        if: steps.changes.outputs.pA == 'true' || steps.changes.outputs.pB == 'true' || steps.changes.outputs.pC == 'true' || steps.changes.outputs.pD == 'true' || steps.changes.outputs.pE == 'true' || steps.changes.outputs.pF == 'true' || steps.changes.outputs.shared == 'true'
+        run: |
+          mkdir -p pA/attachments
+          pdfunite pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pA/attachments/problems.pdf
+
       - name: Commit pdf
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -153,6 +165,7 @@ jobs:
           git add pD/statement/index.pdf
           git add pE/statement/index.pdf
           git add pF/statement/index.pdf
+          git add pA/attachments/problems.pdf
           git diff-index --quiet HEAD -- || git commit -m "Build pdf"
 
       - name: Push to GitHub

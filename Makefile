@@ -12,8 +12,8 @@ pA-check:
 	cd pA && tps invoke solution/ac.cpp | tee -a solutions-check.txt
 
 merge-pdf:
-	pdfunite pA/statement/index.pdf problems.pdf
+	pdfunite pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf problems.pdf
 	mkdir -p pA/attachments
 	cp problems.pdf pA/attachments
 	# 99改成對應的比賽ID
-	cmsImportTask -c 99 ./pA/ -u
+	# cmsImportTask -c 99 ./pA/ -u
