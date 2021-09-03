@@ -1,9 +1,9 @@
 {
 	"contest_name": "110學年度資訊學科能力競賽臺南一中校內初選",
 	"problem_label": "D",
-	"name": "GAMAGAMA",
-	"code": "GAMAGAMA",
-	"title": "GAMAGAMA",
+	"name": "EatAllLeftMost",
+	"code": "EatAllLeftMost",
+	"title": "花子一口吞",
 	"memory_limit": 512,
 	"time_limit": 3.0,
 	"type": "Batch",
