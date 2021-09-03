@@ -1,0 +1,99 @@
+name: Build tests
+
+on:
+  push:
+    paths:
+      - '*/gen/**'
+      - '*/solution/**'
+      - '*/problem.json'
+      - '*/solutions.json'
+      - '*/subtasks.json'
+  workflow_dispatch:
+
+jobs:
+  pA:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Install tps
+        run: |
+          git clone https://github.com/ioi-2017/tps.git
+          cd tps && sudo ./install-tps.sh
+
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            pA:
+              - 'pA/gen/**'
+              - 'pA/solution/**'
+              - 'pA/problem.json'
+              - 'pA/solutions.json'
+              - 'pA/subtasks.json'
+            pB:
+              - 'pB/gen/**'
+              - 'pB/solution/**'
+              - 'pB/problem.json'
+              - 'pB/solutions.json'
+              - 'pB/subtasks.json'
+            pE:
+              - 'pE/gen/**'
+              - 'pE/solution/**'
+              - 'pE/problem.json'
+              - 'pE/solutions.json'
+              - 'pE/subtasks.json'
+            pF:
+              - 'pF/gen/**'
+              - 'pF/solution/**'
+              - 'pF/problem.json'
+              - 'pF/solutions.json'
+              - 'pF/subtasks.json'
+
+      - name: Build pA
+        if: steps.changes.outputs.pA == 'true'
+        working-directory: pA
+        run: |
+          tps gen -s
+          git add pA/tests/*.in
+          git add pA/tests/*.out
+
+      - name: Build pB
+        if: steps.changes.outputs.pB == 'true'
+        working-directory: pB
+        run: |
+          tps gen -s
+          git add pB/tests/*.in
+          git add pB/tests/*.out
+
+      - name: Build pE
+        if: steps.changes.outputs.pE == 'true'
+        working-directory: pE
+        run: |
+          tps gen -s --no-gen
+          git add pE/tests/*.in
+          git add pE/tests/*.out
+
+      - name: Build pF
+        if: steps.changes.outputs.pF == 'true'
+        working-directory: pF
+        run: |
+          tps gen -s
+          git add pF/tests/*.in
+          git add pF/tests/*.out
+
+      - name: Commit tests
+        run: |
+          git diff-index --quiet HEAD -- || git commit -m "Build tests"
+
+      - name: Push to GitHub
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
