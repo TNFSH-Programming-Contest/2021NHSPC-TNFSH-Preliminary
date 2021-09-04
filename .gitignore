@@ -10,14 +10,6 @@ template.fdb_latexmk
 template.fls
 template.log
 
-# 定稿時才加入版本控制
-pA/solutions-check.txt
-pB/solutions-check.txt
-pC/solutions-check.txt
-pD/solutions-check.txt
-pE/solutions-check.txt
-pF/solutions-check.txt
-
 # Ignore test-generator generated manual testcases
 pC/gen/manual/
 pD/gen/manual/
