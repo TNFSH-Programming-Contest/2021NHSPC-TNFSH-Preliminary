@@ -25,11 +25,11 @@ def run_solutions():
     solutions = load_data(SOLUTIONS_JSON)
 
     for solution in solutions:
-        print(solution)
+        print(solution, flush=True)
         subprocess.run([
             'tps', 'invoke', os.path.join('solution', solution)
         ])
-        print()
+        print(flush=True)
 
 
 if __name__ == "__main__":

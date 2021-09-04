@@ -16,7 +16,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install dos2unix
+          sudo apt-get install dos2unix python3-setuptools
           sudo python3 -m pip install psutil
 
       - name: Setup git
