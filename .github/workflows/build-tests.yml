@@ -77,7 +77,7 @@ jobs:
               - 'pF/subtasks.json'
 
       - name: Build pA
-        if: ${{steps.changes.outputs.pA == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pA') }}
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pA == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
         working-directory: pA
         run: |
           tps gen -s
@@ -90,7 +90,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pB
-        if: ${{steps.changes.outputs.pB == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pB') }}
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pB == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
         working-directory: pB
         run: |
           tps gen -s
@@ -103,7 +103,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pC
-        if: ${{steps.changes.outputs.pC == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pC') }}
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pC == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
         working-directory: pC
         run: |
           tps gen -s
@@ -116,7 +116,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pD
-        if: ${{steps.changes.outputs.pD == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pD') }}
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pD == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
         working-directory: pD
         run: |
           tps gen -s
@@ -129,7 +129,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pE
-        if: ${{steps.changes.outputs.pE == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pE') }}
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pE == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
         working-directory: pE
         run: |
           tps gen -s --no-gen
@@ -142,7 +142,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pF
-        if: ${{steps.changes.outputs.pF == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pF') }}
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pF == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
         working-directory: pF
         run: |
           tps gen -s
