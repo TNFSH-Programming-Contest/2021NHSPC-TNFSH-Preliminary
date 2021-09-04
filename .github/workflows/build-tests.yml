@@ -95,7 +95,7 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
-      
+
       - name: Build pC
         if: ${{steps.changes.outputs.pC == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pC') }}
         working-directory: pC
@@ -106,7 +106,7 @@ jobs:
           git add tests/gen_summary
           git add tests/mapping
           git restore gen/data
-      
+
       - name: Build pD
         if: ${{steps.changes.outputs.pD == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pD') }}
         working-directory: pD
@@ -140,7 +140,8 @@ jobs:
 
       - name: Commit tests
         run: |
-          git pull && (git diff-index --quiet HEAD -- || git commit -m "Build tests")
+          git pull
+          git diff-index --quiet HEAD -- || git commit -m "Build tests"
 
       - name: Push to GitHub
         uses: ad-m/github-push-action@v0.6.0
