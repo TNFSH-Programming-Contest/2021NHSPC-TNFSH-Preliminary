@@ -1,0 +1,83 @@
+name: Run solutions
+
+on:
+  workflow_dispatch:
+    inputs:
+        target:
+            description: 'Manual build target'
+            default: 'all'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dos2unix
+        run: |
+          sudo apt-get install dos2unix
+
+      - name: Setup git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Install tps
+        run: |
+          git clone https://github.com/ioi-2017/tps.git
+          cd tps && sudo ./install-tps.sh
+
+      - name: Run pA
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
+        working-directory: pA
+        run: |
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Run pB
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
+        working-directory: pB
+        run: |
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Run pC
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
+        working-directory: pC
+        run: |
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Run pD
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
+        working-directory: pD
+        run: |
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Run pE
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
+        working-directory: pE
+        run: |
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Run pF
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
+        working-directory: pF
+        run: |
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Commit tests
+        run: |
+          git pull
+          git diff --cached --quiet || git commit -m "Run solutions"
+          git push

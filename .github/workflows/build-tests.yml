@@ -85,6 +85,9 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pB
         if: ${{steps.changes.outputs.pB == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pB') }}
@@ -95,6 +98,9 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pC
         if: ${{steps.changes.outputs.pC == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pC') }}
@@ -105,6 +111,9 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pD
         if: ${{steps.changes.outputs.pD == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pD') }}
@@ -115,6 +124,9 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pE
         if: ${{steps.changes.outputs.pE == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pE') }}
@@ -125,6 +137,9 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pF
         if: ${{steps.changes.outputs.pF == 'true' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'pF') }}
@@ -135,6 +150,9 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Commit tests
         run: |
