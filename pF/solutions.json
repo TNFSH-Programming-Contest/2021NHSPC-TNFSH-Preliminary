@@ -4,5 +4,8 @@
 	},
 	"segTree.cpp": {
 		"verdict": "partially_correct"
+	},
+	"YongFu.cpp": {
+		"verdict": "correct"
 	}
 }
