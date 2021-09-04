@@ -4,6 +4,7 @@
 __pycache__/
 logs/
 sandbox/
+*/checker/checker
 template.aux
 template.fdb_latexmk
 template.fls
