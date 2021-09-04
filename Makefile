@@ -1,19 +1,19 @@
 nothing:
 
-all: pA merge-pdf
+import-pA:
+	cmsImportTask -c 6 ./pA/ -u $(if $(s), "" ,"--no-statement")
 
-pA:
-	cd pA && tps statement
-	cd pA && tps gen
+import-pB:
+	cmsImportTask -c 6 ./pB/ -u $(if $(s), "" ,"--no-statement")
 
-pA-check:
-	cd pA && > solutions-check.txt
-	cd pA && echo "ac.cpp" >> solutions-check.txt
-	cd pA && tps invoke solution/ac.cpp | tee -a solutions-check.txt
+import-pC:
+	cmsImportTask -c 6 ./pC/ -u $(if $(s), "" ,"--no-statement")
 
-merge-pdf:
-	pdfunite pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf problems.pdf
-	mkdir -p pA/attachments
-	cp problems.pdf pA/attachments
-	# 99改成對應的比賽ID
-	# cmsImportTask -c 99 ./pA/ -u
+import-pD:
+	cmsImportTask -c 6 ./pD/ -u $(if $(s), "" ,"--no-statement")
+
+import-pE:
+	cmsImportTask -c 6 ./pE/ -u $(if $(s), "" ,"--no-statement")
+
+import-pF:
+	cmsImportTask -c 6 ./pF/ -u $(if $(s), "" ,"--no-statement")
