@@ -24,7 +24,7 @@ signed main()
     }
     
     int mxs = 0;
-    while (clock() - start_time <= CLOCKS_PER_SEC * 2.85)
+    while (clock() - start_time <= CLOCKS_PER_SEC * 0.85)
     {
         int i = mt()%n, j = mt()%n;
         if (i > j)
