@@ -24,13 +24,13 @@
 		"sub3": {
             "index": 3,
             "score": 20,
-            "text": "$K \\leq 10$",
+            "text": "$K \\leq 30$",
             "validators": []
         },
 		"sub4": {
             "index": 4,
             "score": 20,
-            "text": "符合 $a_i \\neq a_{i-1}$ 的 $i$ 最多 $2$ 個，且 $K \\leq 500$",
+            "text": "符合 $a_i \\neq a_{i-1}$ 的 $i$ 最多 $2$ 個，且 $K \\leq 2000$",
             "validators": []
         },
         "all": {

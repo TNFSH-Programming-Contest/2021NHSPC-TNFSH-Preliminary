@@ -30,7 +30,7 @@
 輸出花子嘴巴剩的量最大值。  
 
 ## 輸入限制
-- $1 \leq N \leq 2 \times 10^6$
+- $1 \leq N \leq 5 \cdot 10^5$
 - $1 \leq K \leq 10^9$
 - $1 \leq a_i \leq 10^9$
 
