@@ -126,6 +126,8 @@ no
 no
 ```
 
+\clearpage
+
 ## 範例說明 2
 \begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
 	&
@@ -144,8 +146,6 @@ no
 	操作 4：\enskip $0\quad[0 \times 0 = 0 = 0]$
 	\\
 \end{tabular}
-
-\clearpage
 
 \begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
 	$\Rightarrow$ &
