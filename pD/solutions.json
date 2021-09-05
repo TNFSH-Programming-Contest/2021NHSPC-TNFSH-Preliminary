@@ -5,6 +5,9 @@
 	"full_int.cpp": {
 		"verdict": "correct"
 	},
+	"full_optimized.cpp": {
+		"verdict": "correct"
+	},
 	"partial_randseg.cpp": {
 		"verdict": "partially_correct"
 	},
