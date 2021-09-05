@@ -332,10 +332,10 @@ def genMain():
 	gen.newTest('sub4', 1, gen4Segment, opt_gen=dict(K=1848, v=[168, 264, 77]))
 	
 	print('[genMain]: Gen #all')
-	gen.newTest('all', 2, gen5Random)
+	gen.newTest('all', 3, gen5Random)
 	gen.newTest('all', 1, gen5RandHill, opt_gen=dict(th=9999/10000, nsth=.0015, llim=(1, 15)))
 	gen.newTest('all', 1, gen5RandHill, opt_gen=dict(th=19999/20000, llim=(1, 5)))
-	gen.newTest('all', 1, gen5RandHighHill)
+	gen.newTest('all', 2, gen5RandHighHill)
 	gen.newTest('all', 1, gen5Isolated)
 	gen.newTest('all', 1, gen5Isolated, opt_gen=dict(lx=3))
 	gen.newTest('all', 1, gen5Segments)
