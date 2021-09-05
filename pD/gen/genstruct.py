@@ -15,7 +15,7 @@ def randomInserted(v, w):
 	return res
 
 def randomSegments(N, v):
-	vdif = sorted([0, N, *random.sample(range(1, N-1), len(v)-1)])
+	vdif = sorted([0, N, *random.sample(range(1, N), len(v)-1)])
 	
 	res = []
 	for i in range(len(v)):
