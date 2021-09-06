@@ -12,7 +12,7 @@
         "sub1": {
             "index": 1,
             "score": 20,
-            "text": "$Q \\leq 8000$, 不含操作 $3$",
+            "text": "$Q \\leq 8000$, 且不含操作 $3$",
             "validators": []
         },
         "sub2": {
@@ -24,7 +24,7 @@
 		"sub3": {
             "index": 3,
             "score": 20,
-            "text": "$0 \\leq x \\leq 1$, 不含操作 $3$",
+            "text": "初始積分為 $0$ 或 $1$, 且不含操作 $3$",
             "validators": []
         },
         "sub4": {
