@@ -13,8 +13,8 @@ on:
   workflow_dispatch:
     inputs:
         target:
-            description: 'Manual build target'
-            default: 'all'
+            description: 'Problem labels to build'
+            default: 'ABCDEF'
 
 jobs:
   build:
@@ -116,37 +116,37 @@ jobs:
               - 'pF/subtasks.json'
 
       - name: Build pA
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pA == 'true' || steps.changes.outputs.template == 'true')) || github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
+        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pA == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'A')
         working-directory: pA
         run: |
           tps statement
 
       - name: Build pB
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pB == 'true' || steps.changes.outputs.template == 'true')) || github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
+        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pB == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'B')
         working-directory: pB
         run: |
           tps statement
 
       - name: Build pC
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pC == 'true' || steps.changes.outputs.template == 'true')) || github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
+        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pC == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'C')
         working-directory: pC
         run: |
           tps statement
 
       - name: Build pD
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pD == 'true' || steps.changes.outputs.template == 'true')) || github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
+        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pD == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'D')
         working-directory: pD
         run: |
           tps statement
 
       - name: Build pE
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pE == 'true' || steps.changes.outputs.template == 'true')) || github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
+        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pE == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'E')
         working-directory: pE
         run: |
           tps statement
 
       - name: Build pF
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pF == 'true' || steps.changes.outputs.template == 'true')) || github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
+        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pF == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'F')
         working-directory: pF
         run: |
           tps statement

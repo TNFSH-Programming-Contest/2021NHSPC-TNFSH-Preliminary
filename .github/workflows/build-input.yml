@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
         target:
-            description: 'Manual build target'
-            default: 'all'
+            description: 'Problem labels to build'
+            default: 'ABCDEF'
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
           cd tps && sudo ./install-tps.sh
 
       - name: Build pA
-        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
+        if: contains(github.event.inputs.target, 'A')
         working-directory: pA
         run: |
           tps gen -s
@@ -43,7 +43,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pB
-        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
+        if: contains(github.event.inputs.target, 'B')
         working-directory: pB
         run: |
           tps gen -s
@@ -56,7 +56,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pC
-        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
+        if: contains(github.event.inputs.target, 'C')
         working-directory: pC
         run: |
           tps gen -s
@@ -69,7 +69,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pD
-        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
+        if: contains(github.event.inputs.target, 'D')
         working-directory: pD
         run: |
           tps gen -s
@@ -82,7 +82,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pE
-        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
+        if: contains(github.event.inputs.target, 'E')
         working-directory: pE
         run: |
           tps gen -s
@@ -95,7 +95,7 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pF
-        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
+        if: contains(github.event.inputs.target, 'F')
         working-directory: pF
         run: |
           tps gen -s
