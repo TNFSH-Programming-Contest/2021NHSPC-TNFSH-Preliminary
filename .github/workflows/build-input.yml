@@ -1,13 +1,6 @@
-name: Build tests
+name: Build input
 
 on:
-  push:
-    paths:
-      - '*/gen/**'
-      - '*/solution/**'
-      - '*/problem.json'
-      - '*/solutions.json'
-      - '*/subtasks.json'
   workflow_dispatch:
     inputs:
         target:
@@ -36,52 +29,11 @@ jobs:
           git clone https://github.com/ioi-2017/tps.git
           cd tps && sudo ./install-tps.sh
 
-      - uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            pA:
-              - 'pA/gen/**'
-              - 'pA/solution/**'
-              - 'pA/problem.json'
-              - 'pA/solutions.json'
-              - 'pA/subtasks.json'
-            pB:
-              - 'pB/gen/**'
-              - 'pB/solution/**'
-              - 'pB/problem.json'
-              - 'pB/solutions.json'
-              - 'pB/subtasks.json'
-            pC:
-              - 'pC/gen/**'
-              - 'pC/solution/**'
-              - 'pC/problem.json'
-              - 'pC/solutions.json'
-              - 'pC/subtasks.json'
-            pD:
-              - 'pD/gen/**'
-              - 'pD/solution/**'
-              - 'pD/problem.json'
-              - 'pD/solutions.json'
-              - 'pD/subtasks.json'
-            pE:
-              - 'pE/gen/**'
-              - 'pE/solution/**'
-              - 'pE/problem.json'
-              - 'pE/solutions.json'
-              - 'pE/subtasks.json'
-            pF:
-              - 'pF/gen/**'
-              - 'pF/solution/**'
-              - 'pF/problem.json'
-              - 'pF/solutions.json'
-              - 'pF/subtasks.json'
-
       - name: Build pA
-        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pA == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
         working-directory: pA
         run: |
-          tps gen -s --no-gen
+          tps gen -s
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -91,10 +43,10 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pB
-        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pB == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
         working-directory: pB
         run: |
-          tps gen -s --no-gen
+          tps gen -s
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -104,10 +56,10 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pC
-        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pC == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
         working-directory: pC
         run: |
-          tps gen -s --no-gen
+          tps gen -s
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -117,10 +69,10 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pD
-        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pD == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
         working-directory: pD
         run: |
-          tps gen -s --no-gen
+          tps gen -s
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -130,10 +82,10 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pE
-        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pE == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
         working-directory: pE
         run: |
-          tps gen -s --no-gen
+          tps gen -s
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -143,10 +95,10 @@ jobs:
           git add solutions-check.txt
 
       - name: Build pF
-        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pF == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
         working-directory: pF
         run: |
-          tps gen -s --no-gen
+          tps gen -s
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -158,5 +110,5 @@ jobs:
       - name: Commit tests
         run: |
           git pull
-          git diff --cached --quiet || git commit -m "Build tests"
+          git diff --cached --quiet || git commit -m "Build input"
           git push
