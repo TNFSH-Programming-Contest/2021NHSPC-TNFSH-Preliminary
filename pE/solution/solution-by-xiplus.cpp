@@ -43,19 +43,17 @@ int main() {
 		c = outtar[b];
 		r = edge[a][b] + edge[b][c];
 		edge[a].erase(b);
-		edge[b].erase(a);
-		ecnt--;
+		outdeg[a]--;
+		edge[b].erase(c);
+		indeg[c]--;
+		ecnt -= 2;
 		if (edge[a].count(c) == 0) {
 			edge[a][c] = r;
 			indeg[c]++;
-			insrc[c] = a;
 			outdeg[a]++;
-			outtar[a] = c;
+			ecnt += 1;
 		} else {
 			edge[a][c] = calcPR(edge[a][c], r);
-			ecnt--;
-			outdeg[a]--;
-			indeg[c]--;
 			if (indeg[a] == 1 && outdeg[a] == 1) {
 				squeue.push(a);
 			}
@@ -63,7 +61,9 @@ int main() {
 				squeue.push(c);
 			}
 		}
+		insrc[c] = a;
+		outtar[a] = c;
 	}
 
-	cout << setprecision(10) << edge[1][2] << endl;
+	cout << fixed << setprecision(10) << edge[1][2] << endl;
 }
