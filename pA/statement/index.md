@@ -1,4 +1,4 @@
-# 中位數
+# ABC體操
 
 \begin{figure}[h]
 \centering
