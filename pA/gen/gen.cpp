@@ -57,8 +57,11 @@ int main(int argc, char* argv[]) {
 		int X = rnd.next(1, N);
 		int dis = rnd.next(0, (N - X) / 2);
 		int Y = X + dis * 2;
-		if (taskN <= 3 && X > Y) {
-			swap(X, Y);
+		if (taskN >= 4) {
+			int is_swap = rnd.next(1, 2);
+			if (is_swap == 2) {
+				swap(X, Y);
+			}
 		}
 		cout << X << " " << Y << endl;
 	}
