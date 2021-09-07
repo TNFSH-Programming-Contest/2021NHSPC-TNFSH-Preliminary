@@ -4,7 +4,8 @@
 #define endl '\n'
 using namespace std;
 
-const int _1e6 = 1000000;
+const int _MAXN = 100000;  // 10^5
+const int _MAXQ = 100000;  // 10^5
 
 int main(int argc, char* argv[]) {
 	ios::sync_with_stdio(0);
@@ -14,7 +15,7 @@ int main(int argc, char* argv[]) {
 	int taskN = atoi(argv[1]);
 	int subtaskN = atoi(argv[2]);
 
-	int maxN = _1e6;
+	int maxN = _MAXN;
 	if (taskN == 2) {
 		maxN = 10;
 	}
@@ -50,7 +51,7 @@ int main(int argc, char* argv[]) {
 	}
 	cout << endl;
 
-	int Q = rnd.next(1, _1e6);
+	int Q = rnd.next(1, _MAXQ);
 	cout << Q << endl;
 
 	for (int i = 0; i < Q; i++) {
