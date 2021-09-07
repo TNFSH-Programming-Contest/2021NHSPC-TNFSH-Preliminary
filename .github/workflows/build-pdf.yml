@@ -168,5 +168,6 @@ jobs:
           git add pE/statement/index.pdf
           git add pF/statement/index.pdf
           git add pA/attachments/problems.pdf
+          git pull
           git diff-index --quiet HEAD -- || git commit -m "Build pdf"
           git push
