@@ -1,0 +1,114 @@
+name: Build input
+
+on:
+  workflow_dispatch:
+    inputs:
+        target:
+            description: 'Manual build target'
+            default: 'all'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install dos2unix python3-setuptools
+          sudo python3 -m pip install psutil
+
+      - name: Setup git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Install tps
+        run: |
+          git clone https://github.com/ioi-2017/tps.git
+          cd tps && sudo ./install-tps.sh
+
+      - name: Build pA
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
+        working-directory: pA
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Build pB
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
+        working-directory: pB
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Build pC
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
+        working-directory: pC
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Build pD
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
+        working-directory: pD
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Build pE
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
+        working-directory: pE
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Build pF
+        if: github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
+        working-directory: pF
+        run: |
+          tps gen -s
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Commit tests
+        run: |
+          git pull
+          git diff --cached --quiet || git commit -m "Build input"
+          git push

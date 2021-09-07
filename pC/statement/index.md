@@ -23,10 +23,10 @@ GAMAGAMA水族館有兩條觀察大型水族箱的海底隧道，空空琉會在
 第一行有一個數字 $Q$，表示接下來的操作次數。  
 接下來有 $Q$ 行，每一行為操作為以下其一（皆不含引號）。  
 
- - "`1 k`" - 若遊客進入隧道前的積分為 $k$，請輸出經過兩條隧道後的積分較大值。
- - "`2 i + a`" - 在 $i$ 號隧道最尾端加上 $+a$ 的告示牌。
- - "`2 i * a`" - 在 $i$ 號隧道最尾端加上 $\times a$ 的告示牌。
- - "`3`" - 輸出當下遊客無論選擇哪條隧道，最終積分皆相同的初始積分，若不存在或多組解則輸出 "`no`"（不含引號）。
+ - "`1 k`" --- 若遊客進入隧道前的積分為 $k$，請輸出經過兩條隧道後的積分較大值。
+ - "`2 i + a`" --- 在 $i$ 號隧道最尾端加上 $+a$ 的告示牌。
+ - "`2 i * a`" --- 在 $i$ 號隧道最尾端加上 $\times a$ 的告示牌。
+ - "`3`" --- 輸出當下遊客無論選擇哪條隧道，最終積分皆相同的初始積分，若不存在或多組解則輸出 "`no`"（不含引號）。
 
 ## 輸出
 對於每筆操作 $1$ 請輸出一個整數 $k$。  
@@ -65,6 +65,41 @@ GAMAGAMA水族館有兩條觀察大型水族箱的海底隧道，空空琉會在
 4
 ```
 
+## 範例說明 1
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	&
+	\includegraphics[width=0.39\textwidth]{s1-img0.png} &
+	$\Rightarrow$ &
+	\includegraphics[width=0.39\textwidth]{s1-img1.png} \\
+\end{tabular}
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	&
+	(一開始兩條隧道沒有告示牌) \newline
+	操作 1：\enskip $3\quad[\max(3,\ 3) = 3]$
+	&
+	&
+	操作 2：\enskip 隧道1接上 $+ 2$ \newline
+	操作 3：\enskip $5\quad[\max(3+2,\ 3) = 5]$
+	\\
+\end{tabular}
+
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	$\Rightarrow$ &
+	\includegraphics[width=0.39\textwidth]{s1-img2.png} &
+	$\Rightarrow$ &
+	\includegraphics[width=0.39\textwidth]{s1-img3.png} \\
+\end{tabular}
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	&
+	操作 4：\enskip 隧道2接上 $\times 2$ \newline
+	\mbox{操作 5：\enskip $6\quad[\max(3+2,\ 3 \times 2) = 6]$}
+	&
+	&
+	操作 6：\enskip 隧道1接上 $+ 2$ \newline
+	\mbox{操作 7：\enskip $7\quad[\max(3+2+2,\ 3 \times 2) = 7]$} \newline
+	操作 8：\enskip $4\quad[4+2+2 = 4 \times 2 = 8]$
+	\\
+\end{tabular}
 \clearpage
 
 ## 範例輸入 2
@@ -90,3 +125,42 @@ GAMAGAMA水族館有兩條觀察大型水族箱的海底隧道，空空琉會在
 no
 no
 ```
+
+\clearpage
+
+## 範例說明 2
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	&
+	\includegraphics[width=0.39\textwidth]{s2-img0.png} &
+	$\Rightarrow$ &
+	\includegraphics[width=0.39\textwidth]{s2-img1.png} \\
+\end{tabular}
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	&
+	(一開始兩條隧道沒有告示牌) \newline
+	操作 1：\enskip $3\quad[\max(3,\ 3) = 3]$
+	&
+	&
+	操作 2：\enskip 隧道1接上 $\times 0$ \newline
+	操作 3：\enskip $3\quad[\max(3 \times 0,\ 3) = 3]$ \newline
+	操作 4：\enskip $0\quad[0 \times 0 = 0 = 0]$
+	\\
+\end{tabular}
+
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	$\Rightarrow$ &
+	\includegraphics[width=0.39\textwidth]{s2-img2.png} &
+	$\Rightarrow$ &
+	\includegraphics[width=0.39\textwidth]{s2-img3.png} \\
+\end{tabular}
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	&
+	操作 5：\enskip 隧道2接上 $\times 0$ \newline
+	\mbox{操作 6：\enskip $0\quad[\max(3 \times 0,\ 3 \times 0) = 0]$}
+	\mbox{操作 7：\enskip $\text{no}\quad[\text{多組解}]$}
+	&
+	&
+	操作 8：\enskip 隧道1接上 $+ 2$ \newline
+	\mbox{操作 9：\enskip $\text{no}\quad[\text{不存在}]$}
+	\\
+\end{tabular}

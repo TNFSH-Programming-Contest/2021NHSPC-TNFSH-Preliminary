@@ -1,4 +1,4 @@
-# pF. 最小生成數
+# 最小生成數
 
 \begin{figure}[h]
 \centering

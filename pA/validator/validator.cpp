@@ -21,9 +21,9 @@ int main() {
 	inf.readEoln();
 
 	for (int i = 0; i < Q; i++) {
-		inf.readInt(1, 1000000);
+		inf.readInt(1, N);
 		inf.readSpace();
-		inf.readInt(1, 1000000);
+		inf.readInt(1, N);
 		inf.readEoln();
 	}
 

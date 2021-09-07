@@ -17,19 +17,32 @@
         },
         "parallel": {
             "index": 2,
+<<<<<<< HEAD
             "score": 7,
+=======
+            "score": 20,
+>>>>>>> d2161061f30e37aef41c7702e1e0be7458a1d526
             "text": "傳送網路的組成只有情形 1 及 3",
             "validators": ["validator-parallel.cpp"]
         },
         "1000": {
             "index": 3,
+<<<<<<< HEAD
             "score": 51,
+=======
+            "score": 30,
+>>>>>>> d2161061f30e37aef41c7702e1e0be7458a1d526
             "text": "$0<N,E\\leq1000$",
             "validators": ["validator-ne1000.cpp"]
         },
         "all": {
+<<<<<<< HEAD
             "index": 3,
             "score": 36,
+=======
+            "index": 4,
+            "score": 30,
+>>>>>>> d2161061f30e37aef41c7702e1e0be7458a1d526
             "text": "無額外限制",
             "validators": []
         }

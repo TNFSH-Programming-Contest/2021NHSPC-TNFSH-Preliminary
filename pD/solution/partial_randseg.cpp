@@ -23,15 +23,15 @@ signed main()
         cin >> v[i];
     }
     
-    vector<int> prf(n);
+    int *prf = new int[n]{};
     for (int i=0; i<n; i++)
     {
-        prf[i] += v[i] + (i? prf[i-1]: 0);
+        prf[i] = v[i] + (i? prf[i-1]: 0);
         prf[i] %= k;
     }
     
     int mxs = 0;
-    while (clock() - start_time <= CLOCKS_PER_SEC * 2.85)
+    while (clock() - start_time <= CLOCKS_PER_SEC * 0.85)
     {
         int i = mt()%n, j = mt()%n;
         if (i > j)

@@ -1,3 +1,4 @@
+// ac.cpp
 // By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
@@ -11,7 +12,7 @@ int main() {
 
 	int N;
 	cin >> N;
-	for (int i = 0; i < N; i++) {
+	for (int i = 1; i <= N; i++) {
 		cin >> A[i];
 	}
 	int Q, X, Y;

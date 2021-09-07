@@ -1,5 +1,17 @@
 {
 	"solution.cpp": {
 		"verdict": "model_solution"
+	},
+	"solution_by_19nya.cpp": {
+		"verdict": "correct"
+	},
+	"solution-by-Yazmau.cpp": {
+		"verdict": "correct"
+	},
+	"solution-in-E2-by-Yazmau.cpp": {
+		"verdict": "correct"
+	},
+	"solution-by-xiplus.cpp": {
+		"verdict": "correct"
 	}
 }

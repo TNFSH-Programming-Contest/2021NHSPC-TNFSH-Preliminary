@@ -23,14 +23,24 @@
         },
 		"sub3": {
             "index": 3,
+<<<<<<< HEAD
             "score": 31,
             "text": "$K \\leq 10$",
+=======
+            "score": 20,
+            "text": "$K \\leq 30$",
+>>>>>>> d2161061f30e37aef41c7702e1e0be7458a1d526
             "validators": []
         },
 		"sub4": {
             "index": 4,
+<<<<<<< HEAD
             "score": 23,
             "text": "符合 $a_i \\neq a_{i-1}$ 的 $i$ 最多 $2$ 個，且 $K \\leq 500$",
+=======
+            "score": 20,
+            "text": "符合 $a_i \\neq a_{i-1}$ 的 $i$ 最多 $2$ 個，且 $K \\leq 2000$",
+>>>>>>> d2161061f30e37aef41c7702e1e0be7458a1d526
             "validators": []
         },
         "all": {

@@ -9,6 +9,10 @@ on:
       - '*/solutions.json'
       - '*/subtasks.json'
   workflow_dispatch:
+    inputs:
+        target:
+            description: 'Manual build target'
+            default: 'all'
 
 jobs:
   build:
@@ -17,9 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dos2unix
+      - name: Install dependencies
         run: |
-          sudo apt-get install dos2unix
+          sudo apt-get install dos2unix python3-setuptools
+          sudo python3 -m pip install psutil
 
       - name: Setup git
         run: |
@@ -47,6 +52,18 @@ jobs:
               - 'pB/problem.json'
               - 'pB/solutions.json'
               - 'pB/subtasks.json'
+            pC:
+              - 'pC/gen/**'
+              - 'pC/solution/**'
+              - 'pC/problem.json'
+              - 'pC/solutions.json'
+              - 'pC/subtasks.json'
+            pD:
+              - 'pD/gen/**'
+              - 'pD/solution/**'
+              - 'pD/problem.json'
+              - 'pD/solutions.json'
+              - 'pD/subtasks.json'
             pE:
               - 'pE/gen/**'
               - 'pE/solution/**'
@@ -61,27 +78,59 @@ jobs:
               - 'pF/subtasks.json'
 
       - name: Build pA
-        if: steps.changes.outputs.pA == 'true'
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pA == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pA'
         working-directory: pA
         run: |
-          tps gen -s
+          tps gen -s --no-gen
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pB
-        if: steps.changes.outputs.pB == 'true'
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pB == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pB'
         working-directory: pB
         run: |
-          tps gen -s
+          tps gen -s --no-gen
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Build pC
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pC == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pC'
+        working-directory: pC
+        run: |
+          tps gen -s --no-gen
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
+
+      - name: Build pD
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pD == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pD'
+        working-directory: pD
+        run: |
+          tps gen -s --no-gen
+          git add tests/*.in
+          git add tests/*.out
+          git add tests/gen_summary
+          git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pE
-        if: steps.changes.outputs.pE == 'true'
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pE == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pE'
         working-directory: pE
         run: |
           tps gen -s --no-gen
@@ -89,23 +138,25 @@ jobs:
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Build pF
-        if: steps.changes.outputs.pF == 'true'
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pF == 'true') || github.event.inputs.target == 'all' || github.event.inputs.target == 'pF'
         working-directory: pF
         run: |
-          tps gen -s
+          tps gen -s --no-gen
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
           git add tests/mapping
+          rm -f solutions-check.txt
+          tps solutions | tee -a solutions-check.txt
+          git add solutions-check.txt
 
       - name: Commit tests
         run: |
-          git diff-index --quiet HEAD -- || git commit -m "Build tests"
-
-      - name: Push to GitHub
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          git pull
+          git diff --cached --quiet || git commit -m "Build tests"
+          git push
