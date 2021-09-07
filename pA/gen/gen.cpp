@@ -54,17 +54,11 @@ int main(int argc, char* argv[]) {
 	cout << Q << endl;
 
 	for (int i = 0; i < Q; i++) {
-		int X = rnd.next(1, maxN - 1);
-		int Y = rnd.next(1, maxN - 1);
+		int X = rnd.next(1, N);
+		int dis = rnd.next(0, (N - X) / 2);
+		int Y = X + dis * 2;
 		if (taskN <= 3 && X > Y) {
 			swap(X, Y);
-		}
-		if ((Y - X) % 2 != 0) {
-			if (Y > X) {
-				Y += 1;
-			} else {
-				X += 1;
-			}
 		}
 		cout << X << " " << Y << endl;
 	}
