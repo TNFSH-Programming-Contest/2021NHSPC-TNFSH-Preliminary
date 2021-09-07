@@ -53,17 +53,18 @@ $endif$
 \pagestyle{fancyplain}
 \setlength{\headheight}{18pt}
 \fancyhead[l]{\Large \contestName}
-\fancyhead[r]{\Large \problemLabel.\problemName}
+\fancyhead[r]{\Large \problemLabel. \problemName}
+
+\usepackage{graphicx}
+\graphicspath{{$statement_path$/}}
 
 \renewcommand{\thepage}{\problemLabel \ -\;\arabic{page}}
 \renewcommand{\subsection}[1]{\noindent \textbf{\LARGE -- #1 -- }}
 \renewcommand{\subsubsection}[1]{\noindent \textbf{\Large #1 }}
 
 \renewcommand{\section}[1]{\begin{center}
-\begin{spacing}{1.5} {\Huge \problemLabel.\problemName}  \\ \end{spacing} \begin{spacing}{1.0} Problem ID: \problemId \\ Time Limit: \timeLimit s \\ Memory Limit: \memLimit MiB \end{spacing}\vspace*{-0.1cm}
+\begin{spacing}{1.5} {\Huge \problemLabel. \problemName}  \\ \end{spacing} \begin{spacing}{1.0} Problem ID: \problemId \\ Time Limit: \timeLimit s \\ Memory Limit: \memLimit MiB \end{spacing}\vspace*{-0.1cm}
 \end{center}}
-
-\graphicspath{{$statement_path$/}}
 
 % use upquote if available, for straight quotes in verbatim environments
 % use microtype if available
@@ -103,7 +104,8 @@ $if(tables)$
 \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 $endif$
 
-\usepackage{graphicx,grffile}
+% \usepackage{graphicx,grffile}
+\usepackage{grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -147,7 +149,7 @@ $endif$
 \midrule
 \endhead
 $for(subtasks)$
-$subtasks.index$ & $subtasks.score$ & $subtasks.text$\tabularnewline
+$subtasks.index$ & $subtasks.score$ & $subtasks.text$ \tabularnewline
 $endfor$
 \bottomrule
 \end{longtable}}

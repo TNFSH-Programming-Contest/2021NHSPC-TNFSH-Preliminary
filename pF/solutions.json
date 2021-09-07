@@ -1,5 +1,8 @@
 {
 	"ac.cpp": {
 		"verdict": "model_solution"
+	},
+	"segTree.cpp": {
+		"verdict": "partially_correct"
 	}
 }

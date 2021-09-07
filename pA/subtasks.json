@@ -9,21 +9,45 @@
             "text": "範例輸入輸出",
             "validators": []
         },
-        "a0": {
+        "aieqi": {
             "index": 1,
-            "score": 20,
-            "text": "$A = 0$、$1 \\leq B \\leq 10^{4}$",
-            "validators": []
+            "score": 10,
+            "text": "$A_i = i$ 且 $X \\leq Y$",
+            "validators": [
+                "validator-aieqi.cpp",
+                "validator-xleqy.cpp"
+            ]
         },
-        "1e4": {
+        "nleq10": {
             "index": 2,
             "score": 30,
-            "text": "$0 \\leq A, B \\leq 10^{4}$",
-            "validators": []
+            "text": "$A_i \\leq A_{i+1}$ 且 $X \\leq Y$ 且 $N \\leq 10$",
+            "validators": [
+                "validator-increasing.cpp",
+                "validator-xleqy.cpp",
+                "validator-nleq10.cpp"
+            ]
+        },
+        "nleq1e6": {
+            "index": 3,
+            "score": 10,
+            "text": "$A_i \\leq A_{i+1}$ 且 $X \\leq Y$",
+            "validators": [
+                "validator-increasing.cpp",
+                "validator-xleqy.cpp"
+            ]
+        },
+        "query": {
+            "index": 4,
+            "score": 10,
+            "text": "$A_i \\leq A_{i+1}$",
+            "validators": [
+                "validator-increasing.cpp"
+            ]
         },
         "all": {
-            "index": 3,
-            "score": 50,
+            "index": 5,
+            "score": 40,
             "text": "無額外限制",
             "validators": []
         }

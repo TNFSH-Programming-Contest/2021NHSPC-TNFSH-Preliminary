@@ -1,20 +1,22 @@
 *.exe
+*.o
 *.zip
 __pycache__/
 logs/
 sandbox/
+template.aux
+template.fdb_latexmk
+template.fls
+template.log
 
-# 題本定稿時才加入版本控制
-pA/statement/index.pdf
-pB/statement/index.pdf
-pC/statement/index.pdf
-pD/statement/index.pdf
-pE/statement/index.pdf
-pF/statement/index.pdf
+# 定稿時才加入版本控制
+pA/solutions-check.txt
+pB/solutions-check.txt
+pC/solutions-check.txt
+pD/solutions-check.txt
+pE/solutions-check.txt
+pF/solutions-check.txt
 
-# 測資定稿時才加入版本控制
-pA/tests/
-pC/tests/
-pD/tests/
-pE/tests/
-pF/tests/
+# Ignore test-generator generated manual testcases
+pC/gen/manual/
+pD/gen/manual/
