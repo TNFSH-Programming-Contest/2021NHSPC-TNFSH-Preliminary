@@ -3,19 +3,19 @@ using namespace std;
 
 const int _1e6 = 1000005;
 
-unordered_map<int, double> edge[_1e6];
+unordered_map<int, long double> edge[_1e6];
 int indeg[_1e6], insrc[_1e6], outdeg[_1e6], outtar[_1e6];
-inline double calcPR(double a, double b) {
-	return 1 / (1 / a + 1 / b);
+inline long double calcPR(long double a, long double b) {
+	return a * b / (a + b);
 }
 int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 	int N, E;
 	cin >> N >> E;
 	int ecnt = E;
 	int a, b, c;
-	double r;
+	long double r;
 	while (E--) {
 		cin >> a >> b >> r;
 		if (edge[a].count(b) == 0) {
@@ -64,11 +64,6 @@ int main() {
 			}
 		}
 	}
-	// for (int i = 1; i <= N; i++) {
-	// 	for (auto it = edge[i].begin(); it != edge[i].end(); it++) {
-	// 		cout << i << " " << it->first << " " << it->second << endl;
-	// 	}
-	// }
 
-	cout << edge[1][2] << endl;
+	cout << setprecision(10) << edge[1][2] << endl;
 }
