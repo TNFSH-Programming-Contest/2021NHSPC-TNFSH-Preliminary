@@ -60,6 +60,7 @@ jobs:
         working-directory: pC
         run: |
           tps gen -s
+          git add gen/data
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -73,6 +74,7 @@ jobs:
         working-directory: pD
         run: |
           tps gen -s
+          git add gen/data
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
@@ -99,6 +101,7 @@ jobs:
         working-directory: pF
         run: |
           tps gen -s
+          git add gen/data
           git add tests/*.in
           git add tests/*.out
           git add tests/gen_summary
