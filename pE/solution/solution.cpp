@@ -229,7 +229,7 @@ int main(){
 	}
 	for(Edge e:graph[1].edge_out){
 		if(e.node==-1)continue;
-		cout<<setprecision(10)<<e.r<<endl;
+		cout<<fixed<<setprecision(19)<<e.r<<endl;
 		//cout<<setprecision(10)<<fabsl(e.r-ans)<<endl;
 		/*assert(fabsl(e.r-ans)<(long double)0.000001);
 		if(fabsl(e.r-ans)>=(long double)0.000001){
