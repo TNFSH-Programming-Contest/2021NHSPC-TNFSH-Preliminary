@@ -1,5 +1,11 @@
 {
 	"ac.cpp": {
 		"verdict": "model_solution"
+	},
+	"slow.cpp": {
+		"verdict": "partially_correct"
+	},
+	"n2logn.cpp": {
+		"verdict": "partially_correct"
 	}
 }
