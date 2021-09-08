@@ -1,0 +1,59 @@
+name: TPS verify
+
+on:
+  push:
+    paths:
+      - 'pA/**'
+      - 'pB/**'
+      - 'pC/**'
+      - 'pD/**'
+      - 'pE/**'
+      - 'pF/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install dos2unix python3-setuptools
+          sudo python3 -m pip install psutil
+
+      - name: Install tps
+        run: |
+          git clone https://github.com/ioi-2017/tps.git
+          cd tps && sudo ./install-tps.sh
+
+      - name: Verify pA
+        working-directory: pA
+        run: |
+          tps verify
+
+      - name: Verify pB
+        working-directory: pB
+        run: |
+          tps verify
+
+      - name: Verify pC
+        working-directory: pC
+        run: |
+          tps verify
+
+      - name: Verify pD
+        working-directory: pD
+        run: |
+          tps verify
+
+      - name: Verify pE
+        working-directory: pE
+        run: |
+          tps verify
+
+      - name: Verify pF
+        working-directory: pF
+        run: |
+          tps verify
