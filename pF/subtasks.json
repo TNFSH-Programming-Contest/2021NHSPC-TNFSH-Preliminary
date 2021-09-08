@@ -3,7 +3,7 @@
         "validator.cpp"
     ],
     "subtasks": {
-        "sample": {
+        "samples": {
             "index": 0,
             "score": 0,
             "text": "範例輸入輸出",

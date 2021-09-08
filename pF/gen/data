@@ -10,7 +10,7 @@ manual all-07.in
 manual all-08.in
 manual all-09.in
 
-@subtask sample
+@subtask samples
 manual sample-00.in
 manual sample-01.in
 manual sample-02.in
