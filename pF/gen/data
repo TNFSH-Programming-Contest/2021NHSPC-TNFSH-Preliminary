@@ -11,10 +11,10 @@ manual all-08.in
 manual all-09.in
 
 @subtask samples
-manual sample-00.in
-manual sample-01.in
-manual sample-02.in
-manual sample-03.in
+manual samples-00.in
+manual samples-01.in
+manual samples-02.in
+manual samples-03.in
 
 @subtask sub1
 manual sub1-00.in
