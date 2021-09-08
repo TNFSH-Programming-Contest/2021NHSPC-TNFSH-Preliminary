@@ -1,0 +1,10 @@
+ac.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.014     check[OK]        1  [Correct]             
+all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
+
+Subtask summary
+100/100 pts
+
+Finished.
+
