@@ -19,6 +19,5 @@
 	"task_type": "Batch",
 	"task_type_params": "{\"task_type_parameters_Batch_compilation\": \"alone\"}",
 	"has_checker": false,
-	"ignore_checker": true,
 	"score_type": "GroupMin"
 }
