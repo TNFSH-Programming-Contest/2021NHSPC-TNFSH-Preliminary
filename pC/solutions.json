@@ -1,5 +1,8 @@
 {
 	"full.cpp": {
 		"verdict": "model_solution"
+	},
+	"full_public.cpp": {
+		"verdict": "correct"
 	}
 }
