@@ -20,6 +20,7 @@ int main()
     };
     
     map<string, int> q2map;
+	set<int> q1kset;
     
     int Q;
     cin >> Q;
@@ -36,6 +37,7 @@ int main()
             cout << max(calc(0, k), calc(1, k)) << "\n";
             
             sumBrute += routeLen[0] + routeLen[1];
+			q1kset.insert(k);
         }
         else if (qx == 2)
         {
@@ -90,5 +92,6 @@ int main()
     cerr << "}, ";
     
     cerr << "sumqx = {" << sumq[1] << ", " << sumq[2] << ", " << sumq[3] << "}, ";
+	cerr << "k_cnt = " << q1kset.size() << ", ";
     cerr << fixed << setprecision(2) << "time = " << elapsedTime << ", "<< "\n";
 }
