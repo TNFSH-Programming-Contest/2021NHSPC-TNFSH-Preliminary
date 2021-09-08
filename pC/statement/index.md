@@ -104,7 +104,7 @@ GAMAGAMA水族館有兩條觀察大型水族箱的海底隧道，空空琉會在
 
 ## 範例輸入 2
 ```
-9
+11
 1 3
 2 1 * 0
 1 3
@@ -114,6 +114,8 @@ GAMAGAMA水族館有兩條觀察大型水族箱的海底隧道，空空琉會在
 3
 2 1 + 2
 3
+2 2 * 5
+3
 ```
 
 ## 範例輸出 2
@@ -122,6 +124,7 @@ GAMAGAMA水族館有兩條觀察大型水族箱的海底隧道，空空琉會在
 3
 0
 0
+no
 no
 no
 ```
@@ -162,5 +165,20 @@ no
 	&
 	操作 8：\enskip 隧道1接上 $+ 2$ \newline
 	\mbox{操作 9：\enskip $\text{no}\quad[\text{不存在}]$}
+	\\
+\end{tabular}
+
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	$\Rightarrow$ &
+	\includegraphics[width=0.39\textwidth]{s2-img4.png} &
+	&
+	\\
+\end{tabular}
+\begin{tabular}{m{.5em} m{0.44\textwidth} m{.5em} m{0.44\textwidth}}
+	&
+	操作 10：\enskip 隧道2接上 $\times 5$ \newline
+	\mbox{操作 11：\enskip $\text{no}\quad[m = \frac{1}{2} \text{，為非整數解}]$}
+	&
+	&
 	\\
 \end{tabular}
