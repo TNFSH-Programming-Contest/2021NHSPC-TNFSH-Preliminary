@@ -113,7 +113,16 @@ check_status=$(job_status "${check_job}")
 echo_status "${check_status}"
 
 
-printf "%5s" "${score}"
+score_str="$(printf "%6s" "${score}")"
+if py_test "${score} <= 0"; then
+	score_color=red
+elif py_test "${score} >= 1"; then
+	score_color=green
+else
+	score_color=yellow
+fi
+cecho "${score_color}" -n "${score_str}"
+
 hspace 2
 export BOX_PADDING=20
 echo_verdict "${verdict}"
@@ -122,6 +131,9 @@ if "${SHOW_REASON}"; then
 	hspace 2
 	printf "%s" "${reason}"
 fi
+
+echo "${score}" > "${LOGS_DIR}/${test_name}.score"
+echo "${verdict}" > "${LOGS_DIR}/${test_name}.verdict"
 
 echo
 

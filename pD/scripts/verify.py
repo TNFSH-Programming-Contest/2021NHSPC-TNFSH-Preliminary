@@ -61,8 +61,8 @@ necessary_files = [
 ]
 
 semi_necessary_files = [
-    # os.path.join(VALIDATOR_DIR, 'testlib.h'),
-    # os.path.join(GEN_DIR, 'testlib.h'),
+    os.path.join(VALIDATOR_DIR, 'testlib.h'),
+    os.path.join(GEN_DIR, 'testlib.h'),
 ]
 
 if HAS_GRADER:
@@ -228,7 +228,7 @@ def verify_problem():
             warning('could not get git remote url for "{}"'.format(git_remote_name))
             return
         # if prob_name != git_main_remote_name:
-            # warning('problem name and git project name are not the same')
+        #     warning('problem name and git project name are not the same')
 
     check_problem_name(problem['name'])
 
@@ -264,6 +264,13 @@ def verify_problem():
         else:
             if problem['type'] == 'OutputOnly' and problem['has_grader'] is True:
                 warning('output only problems could not have grader')
+
+    if 'num_processes' in problem:
+        if problem['type'] != 'Communication':
+            warning('"num_processes" is only used in communication tasks')
+        else:
+            if not isinstance(problem['num_processes'], int):
+                error('"num_processes" must be an integer')
 
     if 'grader_name' in problem:
         if not HAS_GRADER:
@@ -512,7 +519,7 @@ def verify_solutions(subtasks):
 
     for unused_solution in set(solution_files) - used_solutions:
         if not is_ignored(unused_solution):
-            error('{} is not represented'.format(unused_solution))
+            warning('{} is not represented'.format(unused_solution))
 
     return solutions
 

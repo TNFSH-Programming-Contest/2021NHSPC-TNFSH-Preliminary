@@ -155,7 +155,7 @@ if ! check_float "${HARD_TL}"; then
 	exit 2
 fi
 
-if "${PYTHON}" -c "import sys; sys.exit(0 if ${HARD_TL} <= ${SOFT_TL} else 1)"; then
+if py_test "${HARD_TL} <= ${SOFT_TL}"; then
 	errcho "Provided hard time limit (${HARD_TL}) is not greater than the soft time limit (${SOFT_TL})."
 	usage
 	exit 2
@@ -190,7 +190,7 @@ if "${HAS_CHECKER}"; then
 fi
 
 ret=0
-"${PYTHON}" "${INTERNALS}/invoke.py" "${tests_dir}" || ret=$?
+"${PYTHON}" "${INTERNALS}/invoke.py" "${tests_dir}" "${solution}" || ret=$?
 
 
 echo
