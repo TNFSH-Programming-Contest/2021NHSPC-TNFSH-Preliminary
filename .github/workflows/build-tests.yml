@@ -3,7 +3,6 @@ name: Build tests
 on:
   push:
     paths:
-      - '*/gen/**'
       - '*/solution/**'
       - '*/problem.json'
       - '*/solutions.json'

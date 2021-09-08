@@ -21,27 +21,27 @@ class TestGenerator(Generator):
 				SpaceContainer(end='\n')
 			]
 		)
-	
+
 	def presentAns(self):
 		return List(
 			[SpaceContainer()]
 		)
-	
+
 	def nativeSolve(self, file):
 		solver = str(GENDIR / 'sol_debug.exe')
 		proc = subprocess.run([solver], stdin=file, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
 		ans = proc.stdout.decode().strip()
-		
+
 		if proc.stderr:
 			print('[solver]: {}'.format(proc.stderr.decode()))
 
 		ans = ans.split()
-		
+
 		return [ans]
-	
+
 	def postProcess(self, test):
 		return
-	
+
 	def newTest(self, *args, **kwargs):
 		super().newTest(*args, **kwargs, native_solve=True)
 
@@ -57,9 +57,9 @@ def genAll(genfunc):
 		assert(1 <= K <= N)
 		for a in A:
 			assert(MINA <= a <= MAXA)
-		
+
 		return [[N, K], A]
-	
+
 	return wrapfunc
 
 ############################## Gen 0 ##############################
@@ -69,19 +69,19 @@ def gen0(genfunc):
 	def wrapfunc(**kwargs):
 		[N, K, A] = genfunc(**kwargs)
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen0
 def gen0A():
 	return [
-		5, 2, [3, 2, -2, -1, 0]
+		5, 3, [-3, 3, 0, 2, -3]
 	]
 
 @gen0
 def gen0B():
 	return [
-		5, 3, [-3, 3, 0, 2, -3]
+		5, 2, [3, 2, -2, -1, 0]
 	]
 
 @gen0
@@ -104,7 +104,7 @@ def gen1(genfunc):
 		[N, K, A] = genfunc(**kwargs)
 		assert(1 <= N <= 1000)
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen1
@@ -114,7 +114,7 @@ def gen1A():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen1
@@ -124,7 +124,7 @@ def gen1B():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen1
@@ -134,7 +134,7 @@ def gen1C():
 	A = []
 	for i in range(N):
 		A.append(random.randint(-2, 2))
-	
+
 	return [N, K, A]
 
 ############################## Gen 2 ##############################
@@ -145,7 +145,7 @@ def gen2(genfunc):
 		[N, K, A] = genfunc(**kwargs)
 		assert(K == 1)
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen2
@@ -155,7 +155,7 @@ def gen2A():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen2
@@ -165,7 +165,7 @@ def gen2B():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 ############################## Gen 3 ##############################
@@ -179,7 +179,7 @@ def gen3(genfunc):
 		for i in range(1, len(A)):
 			assert(sorted_A[i - 1] != sorted_A[i])
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen3
@@ -189,7 +189,7 @@ def gen3A():
 	A = [random.randint(MINA, MAXA - N)]
 	for i in range(1, N):
 		A.append(random.randint(A[i - 1] + 1, MAXA - N + i))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -201,7 +201,7 @@ def gen3B():
 	A = [random.randint(MINA, MAXA - N)]
 	for i in range(1, N):
 		A.append(random.randint(A[i - 1] + 1, MAXA - N + i))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -214,7 +214,7 @@ def gen4(genfunc):
 		[N, K, A] = genfunc(**kwargs)
 		assert(K == N)
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen4
@@ -224,7 +224,7 @@ def gen4A():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -236,7 +236,7 @@ def gen4B():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -248,7 +248,7 @@ def gen4C():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	times = random.randint(int(.095 * N), int(.1 * N))
@@ -267,7 +267,7 @@ def gen4D():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	times = random.randint(int(.095 * N), int(.1 * N))
@@ -286,7 +286,7 @@ def gen4E():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	times = random.randint(int(.475 * N), int(.5 * N))
@@ -309,7 +309,7 @@ def gen5(genfunc):
 		for i in range(1, len(A)):
 			assert(sorted_A[i - 1] != sorted_A[i])
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen5
@@ -319,7 +319,7 @@ def gen5A():
 	A = [random.randint(MINA, MAXA - N)]
 	for i in range(1, N):
 		A.append(random.randint(A[i - 1] + 1, MAXA - N + i))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -331,7 +331,7 @@ def gen5B():
 	A = [random.randint(MINA, MAXA - N)]
 	for i in range(1, N):
 		A.append(random.randint(A[i - 1] + 1, MAXA - N + i))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -344,7 +344,7 @@ def gen6(genfunc):
 		[N, K, A] = genfunc(**kwargs)
 		assert(K == 2)
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen6
@@ -354,7 +354,7 @@ def gen6A():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -366,7 +366,7 @@ def gen6B():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -378,7 +378,7 @@ def gen6C():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	times = random.randint(int(.095 * N), int(.1 * N))
@@ -397,7 +397,7 @@ def gen6D():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	times = random.randint(int(.095 * N), int(.1 * N))
@@ -416,7 +416,7 @@ def gen6E():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	random.shuffle(A)
 
 	times = random.randint(int(.475 * N), int(.5 * N))
@@ -437,7 +437,7 @@ def gen7(genfunc):
 		for i in range(1, len(A)):
 			assert(A[i - 1] < A[i])
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen7
@@ -479,7 +479,7 @@ def gen8(genfunc):
 		for i in range(1, len(A)):
 			assert(A[i - 1] <= A[i])
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen8
@@ -550,7 +550,7 @@ def gen9(genfunc):
 		for i in range(1, len(A)):
 			assert(sorted_A[i - 1] != sorted_A[i])
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen9
@@ -560,7 +560,7 @@ def gen9A():
 	A = [random.randint(MINA, MAXA - N)]
 	for i in range(1, N):
 		A.append(random.randint(A[i - 1] + 1, MAXA - N + i))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -572,7 +572,7 @@ def gen9B():
 	A = [random.randint(MINA, MAXA - N)]
 	for i in range(1, N):
 		A.append(random.randint(A[i - 1] + 1, MAXA - N + i))
-	
+
 	random.shuffle(A)
 
 	return [N, K, A]
@@ -584,7 +584,7 @@ def gen10(genfunc):
 	def wrapfunc(**kwargs):
 		[N, K, A] = genfunc(**kwargs)
 		return [N, K, A]
-	
+
 	return wrapfunc
 
 @gen10
@@ -594,7 +594,7 @@ def gen10A():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen10
@@ -604,7 +604,7 @@ def gen10B():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen10
@@ -614,7 +614,7 @@ def gen10C():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen10
@@ -624,7 +624,7 @@ def gen10D():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen10
@@ -634,7 +634,7 @@ def gen10E():
 	A = []
 	for i in range(N):
 		A.append(random.randint(MINA, MAXA))
-	
+
 	return [N, K, A]
 
 @gen10
@@ -644,7 +644,7 @@ def gen10F():
 	A = []
 	for i in range(N):
 		A.append(random.randint(-2, 2))
-	
+
 	return [N, K, A]
 
 ###################################################################
@@ -655,58 +655,58 @@ def main():
 
 	gen = TestGenerator()
 	gen.config(debug=False, test_format=test_format)
-	
+
 
 	gen.newTest("sample", 1, gen0A)
 	gen.newTest("sample", 1, gen0B)
 	gen.newTest("sample", 1, gen0C)
 	gen.newTest("sample", 1, gen0D)
 	# gen.newTest(0, 10, gen0D)
-	
+
 	gen.newTest("sub1", 2, gen1A)
 	gen.newTest("sub1", 3, gen1B)
 	gen.newTest("sub1", 2, gen1C)
-	
+
 	gen.newTest("sub2", 2, gen2A)
 	gen.newTest("sub2", 3, gen2B)
-	
+
 	gen.newTest("sub3", 2, gen3A)
 	gen.newTest("sub3", 3, gen3B)
-	
+
 	gen.newTest("sub4", 1, gen4A)
 	gen.newTest("sub4", 1, gen4B)
 	gen.newTest("sub4", 1, gen4C)
 	gen.newTest("sub4", 1, gen4D)
 	gen.newTest("sub4", 1, gen4E)
-	
+
 	gen.newTest("sub5", 2, gen5A)
 	gen.newTest("sub5", 3, gen5B)
-	
+
 	gen.newTest("sub6", 1, gen6A)
 	gen.newTest("sub6", 1, gen6B)
 	gen.newTest("sub6", 3, gen6C)
 	gen.newTest("sub6", 2, gen6D)
 	gen.newTest("sub6", 3, gen6E)
-	
+
 	gen.newTest("sub7", 1, gen7A)
 	gen.newTest("sub7", 1, gen7B)
 	gen.newTest("sub7", 3, gen7C)
-	
+
 	gen.newTest("sub8", 1, gen8A)
 	gen.newTest("sub8", 1, gen8B)
 	gen.newTest("sub8", 3, gen8C)
 	gen.newTest("sub8", 2, gen8D)
-	
+
 	gen.newTest("sub9", 2, gen9A)
 	gen.newTest("sub9", 3, gen9B)
-	
+
 	gen.newTest("all", 1, gen10A)
 	gen.newTest("all", 1, gen10B)
 	gen.newTest("all", 1, gen10C)
 	gen.newTest("all", 2, gen10D)
 	gen.newTest("all", 3, gen10E)
 	gen.newTest("all", 2, gen10F)
-	
+
 	runTest.config(test_dir=str(GENDIR.resolve() / 'manual'))
 	with open('data', 'w') as gendata:
 		caseMap = {}
