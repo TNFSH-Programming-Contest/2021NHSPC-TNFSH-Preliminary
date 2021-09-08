@@ -14,7 +14,7 @@ on:
     inputs:
         target:
             description: 'Problem labels to build'
-            default: 'ABCDEF'
+            default: 'ABCDEFG'
 
 jobs:
   build:
@@ -114,6 +114,12 @@ jobs:
               - 'pF/statement/index.md'
               - 'pF/problem.json'
               - 'pF/subtasks.json'
+            pG:
+              - 'pG/scripts/statement.sh'
+              - 'pG/statement/*.jpg'
+              - 'pG/statement/index.md'
+              - 'pG/problem.json'
+              - 'pG/subtasks.json'
 
       - name: Build pA
         if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pA == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'A')
@@ -151,10 +157,16 @@ jobs:
         run: |
           tps statement
 
+      - name: Build pG
+        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pG == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'G')
+        working-directory: pG
+        run: |
+          tps statement
+
       - name: Merge pdfs
         run: |
           mkdir -p pA/attachments
-          pdfunite cover.pdf pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pA/attachments/problems.pdf
+          pdfunite cover.pdf pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pG/statement/index.pdf pA/attachments/problems.pdf
 
       - name: Commit pdf
         run: |
@@ -167,6 +179,7 @@ jobs:
           git add pD/statement/index.pdf
           git add pE/statement/index.pdf
           git add pF/statement/index.pdf
+          git add pG/statement/index.pdf
           git add pA/attachments/problems.pdf
           git pull
           git diff-index --quiet HEAD -- || git commit -m "Build pdf"

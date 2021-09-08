@@ -9,6 +9,7 @@ on:
       - 'pD/**'
       - 'pE/**'
       - 'pF/**'
+      - 'pG/**'
   workflow_dispatch:
 
 jobs:
@@ -55,5 +56,10 @@ jobs:
 
       - name: Verify pF
         working-directory: pF
+        run: |
+          tps verify
+
+      - name: Verify pG
+        working-directory: pG
         run: |
           tps verify
