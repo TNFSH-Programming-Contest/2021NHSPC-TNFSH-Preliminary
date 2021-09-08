@@ -9,12 +9,13 @@ if __name__ == '__main__':
         data = json.loads(f.read())
         data = data["subtasks"]
     subtasks = []
+    offset = 1 if 'samples' in data else 0
     for sub in data:
+        data[sub]['index'] += offset
         subtasks.append(data[sub])
 
     def gidx(a):
         return a["index"]
     subtasks.sort(key=gidx)
-    with open(outfile,"w") as f:
-        f.write(json.dumps({"subtasks":subtasks}))
-        #print(json.dumps({"subtasks":subtasks}))
+    with open(outfile, "w") as f:
+        f.write(json.dumps({"subtasks": subtasks}))
