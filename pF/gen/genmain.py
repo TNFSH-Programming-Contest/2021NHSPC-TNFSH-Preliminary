@@ -657,10 +657,10 @@ def main():
 	gen.config(debug=False, test_format=test_format)
 
 
-	gen.newTest("sample", 1, gen0A)
-	gen.newTest("sample", 1, gen0B)
-	gen.newTest("sample", 1, gen0C)
-	gen.newTest("sample", 1, gen0D)
+	gen.newTest("samples", 1, gen0A)
+	gen.newTest("samples", 1, gen0B)
+	gen.newTest("samples", 1, gen0C)
+	gen.newTest("samples", 1, gen0D)
 	# gen.newTest(0, 10, gen0D)
 
 	gen.newTest("sub1", 2, gen1A)
