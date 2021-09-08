@@ -17,3 +17,6 @@ import-pE:
 
 import-pF:
 	cmsImportTask -c 6 ./pF/ -u $(if $(s), "" ,"--no-statement")
+
+import-pG:
+	cmsImportTask -c 6 ./pG/ -u $(if $(s), "" ,"--no-statement")
