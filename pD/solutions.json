@@ -9,9 +9,25 @@
 		"verdict": "correct"
 	},
 	"partial_randseg.cpp": {
-		"verdict": "partially_correct"
+		"verdict": "failed",
+		"except": {
+			"samples": "correct",
+			"sub1": "correct",
+			"sub2": "incorrect",
+			"sub3": "correct",
+			"sub4": "correct",
+			"all": "incorrect"
+		}
 	},
 	"partial_randseg_naive.cpp": {
-		"verdict": "partially_correct"
+		"verdict": "failed",
+		"except": {
+			"samples": "correct",
+			"sub1": "correct",
+			"sub2": "incorrect",
+			"sub3": "incorrect",
+			"sub4": "incorrect",
+			"all": "incorrect"
+		}
 	}
 }

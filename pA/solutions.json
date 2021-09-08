@@ -3,9 +3,17 @@
 		"verdict": "model_solution"
 	},
 	"slow.cpp": {
-		"verdict": "partially_correct"
+		"verdict": "correct"
 	},
 	"n2logn.cpp": {
-		"verdict": "partially_correct"
+		"verdict": "failed",
+		"except": {
+			"samples": "correct",
+			"aieqi": "time_limit",
+			"nleq10": "correct",
+			"nleq1e6": "time_limit",
+			"query": "time_limit",
+			"all": "time_limit"
+		}
 	}
 }

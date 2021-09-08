@@ -3,7 +3,20 @@
 		"verdict": "model_solution"
 	},
 	"segTree.cpp": {
-		"verdict": "partially_correct"
+		"verdict": "failed",
+		"except": {
+			"all": "incorrect",
+			"samples": "incorrect",
+			"sub1": "incorrect",
+			"sub2": "correct",
+			"sub3": "correct",
+			"sub4": "correct",
+			"sub5": "incorrect",
+			"sub6": "correct",
+			"sub7": "correct",
+			"sub8": "correct",
+			"sub9": "correct"
+		}
 	},
 	"YongFu.cpp": {
 		"verdict": "correct"

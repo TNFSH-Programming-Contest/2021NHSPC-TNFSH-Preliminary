@@ -9,7 +9,14 @@
 		"verdict": "correct"
 	},
 	"solution-in-E2-by-Yazmau.cpp": {
-		"verdict": "correct"
+		"verdict": "failed",
+		"except": {
+			"samples": "correct",
+			"series": "correct",
+			"parallel": "time_limit",
+			"1000": "correct",
+			"all": "time_limit"
+		}
 	},
 	"solution-by-xiplus.cpp": {
 		"verdict": "correct"
