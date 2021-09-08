@@ -61,8 +61,8 @@ necessary_files = [
 ]
 
 semi_necessary_files = [
-    os.path.join(VALIDATOR_DIR, 'testlib.h'),
-    os.path.join(GEN_DIR, 'testlib.h'),
+    # os.path.join(VALIDATOR_DIR, 'testlib.h'),
+    # os.path.join(GEN_DIR, 'testlib.h'),
 ]
 
 if HAS_GRADER:

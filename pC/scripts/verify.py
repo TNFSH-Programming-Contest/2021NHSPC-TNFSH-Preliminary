@@ -95,8 +95,8 @@ if HAS_CHECKER:
         os.path.join(CHECKER_DIR, 'Makefile'),
     ]
     semi_necessary_files += [
-        os.path.join(CHECKER_DIR, 'checker.cpp'),
-        os.path.join(CHECKER_DIR, 'testlib.h'),
+        # os.path.join(CHECKER_DIR, 'checker.cpp'),
+        # os.path.join(CHECKER_DIR, 'testlib.h'),
     ]
 
 
