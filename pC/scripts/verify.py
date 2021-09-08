@@ -61,8 +61,8 @@ necessary_files = [
 ]
 
 semi_necessary_files = [
-    os.path.join(VALIDATOR_DIR, 'testlib.h'),
-    os.path.join(GEN_DIR, 'testlib.h'),
+    # os.path.join(VALIDATOR_DIR, 'testlib.h'),
+    # os.path.join(GEN_DIR, 'testlib.h'),
 ]
 
 if HAS_GRADER:
@@ -95,8 +95,8 @@ if HAS_CHECKER:
         os.path.join(CHECKER_DIR, 'Makefile'),
     ]
     semi_necessary_files += [
-        # os.path.join(CHECKER_DIR, 'checker.cpp'),
-        # os.path.join(CHECKER_DIR, 'testlib.h'),
+        os.path.join(CHECKER_DIR, 'checker.cpp'),
+        os.path.join(CHECKER_DIR, 'testlib.h'),
     ]
 
 
