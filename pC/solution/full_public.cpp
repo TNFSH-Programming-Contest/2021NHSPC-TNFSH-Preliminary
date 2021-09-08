@@ -52,7 +52,7 @@ int main()
             }
             else
             {
-				int m = den / nom;
+                int m = den / nom;
                 cout << m << "\n";
             }
         }
