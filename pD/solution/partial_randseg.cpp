@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
+// #define int long long
 
 mt19937 mt;
 
@@ -31,7 +31,14 @@ signed main()
     }
     
     int mxs = 0;
-    while (clock() - start_time <= CLOCKS_PER_SEC * 0.85)
+	for (int i=0; i<n; i++)
+	{
+		mxs = max(mxs, v[i]%k);
+		mxs = max(mxs, prf[i]%k);
+		mxs = max(mxs, (k + prf[n-1] - (i? prf[i-1]: 0))%k);
+	}
+	
+    while (clock() - start_time <= CLOCKS_PER_SEC * 1.85)
     {
         int i = mt()%n, j = mt()%n;
         if (i > j)
