@@ -13,6 +13,7 @@ cover.aux
 cover.fdb_latexmk
 cover.fls
 cover.log
+cover.pdf
 
 # Ignore test-generator generated manual testcases
 pC/gen/manual/
