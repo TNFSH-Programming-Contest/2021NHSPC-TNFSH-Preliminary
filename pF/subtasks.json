@@ -11,7 +11,7 @@
         },
         "sub1": {
             "index": 1,
-            "score": 4,
+            "score": 22,
             "text": "$n \\le 10^3$",
             "validators": []
         },
@@ -23,49 +23,37 @@
         },
         "sub3": {
             "index": 3,
-            "score": 4,
+            "score": 5,
             "text": "$k = n$、保證全部元素相異",
             "validators": []
         },
         "sub4": {
             "index": 4,
-            "score": 4,
+            "score": 3,
             "text": "$k = n$",
             "validators": []
         },
         "sub5": {
             "index": 5,
-            "score": 8,
+            "score": 11,
             "text": "$k = 2$、保證全部元素相異",
             "validators": []
         },
         "sub6": {
             "index": 6,
-            "score": 6,
+            "score": 13,
             "text": "$k = 2$",
             "validators": []
         },
-        "sub7": {
-            "index": 7,
-            "score": 5,
-            "text": "保證序列已經排序、全部元素相異",
-            "validators": []
-        },
-        "sub8": {
-            "index": 8,
-            "score": 3,
-            "text": "保證序列已經排序",
-            "validators": []
-        },
         "sub9": {
-            "index": 9,
-            "score": 20,
+            "index": 7,
+            "score": 19,
             "text": "保證全部元素相異",
             "validators": []
         },
         "all": {
-            "index": 10,
-            "score": 45,
+            "index": 8,
+            "score": 24,
             "text": "無額外限制",
             "validators": []
         }

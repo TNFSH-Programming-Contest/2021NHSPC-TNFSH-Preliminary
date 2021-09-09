@@ -688,14 +688,14 @@ def main():
 	gen.newTest("sub6", 2, gen6D)
 	gen.newTest("sub6", 3, gen6E)
 
-	gen.newTest("sub7", 1, gen7A)
-	gen.newTest("sub7", 1, gen7B)
-	gen.newTest("sub7", 3, gen7C)
+	# gen.newTest("sub7", 1, gen7A)
+	# gen.newTest("sub7", 1, gen7B)
+	# gen.newTest("sub7", 3, gen7C)
 
-	gen.newTest("sub8", 1, gen8A)
-	gen.newTest("sub8", 1, gen8B)
-	gen.newTest("sub8", 3, gen8C)
-	gen.newTest("sub8", 2, gen8D)
+	# gen.newTest("sub8", 1, gen8A)
+	# gen.newTest("sub8", 1, gen8B)
+	# gen.newTest("sub8", 3, gen8C)
+	# gen.newTest("sub8", 2, gen8D)
 
 	gen.newTest("sub9", 2, gen9A)
 	gen.newTest("sub9", 3, gen9B)
