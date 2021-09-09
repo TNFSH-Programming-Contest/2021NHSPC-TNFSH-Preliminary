@@ -1,8 +1,8 @@
 TARGET = genmain.py
 
-.PHONY: all debug clean
+.PHONY: all d debug clean
 
-all:
+all: debug
 	g++ -DEVAL -std=gnu++14 -O2 -pipe -static -s sol_debug.cpp -o sol_debug.exe
 	python3.6 -OO ./genmain.py
 
