@@ -1,12 +1,23 @@
 @subtask samples
 manual sample-01.in
 
+@testset series1000
+gen 1000 1000 S ewnco
+gen 1000 1000 S ruevn
+gen 1000 1000 S tybmr
+
+@testset parallel1000
+gen 1000 1000 P qi5gw
+gen 1000 1000 P tebmt
+gen 1000 1000 P ytonm
+
 @subtask series
 gen 5000 1000 S vomrv
 gen 100 50 S rever
 gen 1000000 1000000 S t64nt
 gen 1000000 1000000 S um32r
 gen 1000000 1000000 S iegji
+@include series1000
 
 @subtask parallel
 gen 5000 1000 P viern
@@ -14,6 +25,7 @@ gen 100 50 P rver2
 gen 1000000 1000000 P yrqki
 gen 1000000 1000000 P whvet
 gen 1000000 1000000 P jyrcd
+@include parallel1000
 
 @subtask 1000
 gen 1000 1000 B rwonv
@@ -21,6 +33,7 @@ gen 1000 1000 B mrwov
 gen 100 50 B weinf
 gen 1000 500 B etofg
 gen 1000 1000 B eptlb
+@include series1000 parallel1000
 
 @subtask all
 gen 1000000 1000000 B vrmre
@@ -28,3 +41,4 @@ gen 1000000 1000000 B rtujn
 gen 1000000 1000000 B yn8yr
 gen 1000000 1000000 B jojur
 gen 1000000 1000000 B ntege
+@include series parallel 1000
