@@ -76,89 +76,98 @@ jobs:
         id: changes
         with:
           filters: |
-            template:
-              - 'template.tex'
             pA:
               - 'pA/scripts/statement.sh'
               - 'pA/statement/*.jpg'
               - 'pA/statement/index.md'
               - 'pA/problem.json'
               - 'pA/subtasks.json'
+              - 'cover.pdf'
+              - 'template.tex'
             pB:
               - 'pB/scripts/statement.sh'
               - 'pB/statement/*.jpg'
               - 'pB/statement/index.md'
               - 'pB/problem.json'
               - 'pB/subtasks.json'
+              - 'template.tex'
             pC:
               - 'pC/scripts/statement.sh'
               - 'pC/statement/*.jpg'
               - 'pC/statement/index.md'
               - 'pC/problem.json'
               - 'pC/subtasks.json'
+              - 'template.tex'
             pD:
               - 'pD/scripts/statement.sh'
               - 'pD/statement/*.jpg'
               - 'pD/statement/index.md'
               - 'pD/problem.json'
               - 'pD/subtasks.json'
+              - 'template.tex'
             pE:
               - 'pE/scripts/statement.sh'
               - 'pE/statement/*.jpg'
               - 'pE/statement/index.md'
               - 'pE/problem.json'
               - 'pE/subtasks.json'
+              - 'template.tex'
             pF:
               - 'pF/scripts/statement.sh'
               - 'pF/statement/*.jpg'
               - 'pF/statement/index.md'
               - 'pF/problem.json'
               - 'pF/subtasks.json'
+              - 'template.tex'
             pG:
               - 'pG/scripts/statement.sh'
               - 'pG/statement/*.jpg'
               - 'pG/statement/index.md'
               - 'pG/problem.json'
               - 'pG/subtasks.json'
+              - 'template.tex'
 
       - name: Build pA
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pA == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'A')
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pA == 'true') || contains(github.event.inputs.target, 'A')
         working-directory: pA
         run: |
           tps statement
+          pdfunite ../cover.pdf statement/index.pdf statement/index-with-cover.pdf
+          rm statement/index.pdf
+          mv statement/index-with-cover.pdf statement/index.pdf
 
       - name: Build pB
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pB == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'B')
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pB == 'true') || contains(github.event.inputs.target, 'B')
         working-directory: pB
         run: |
           tps statement
 
       - name: Build pC
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pC == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'C')
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pC == 'true') || contains(github.event.inputs.target, 'C')
         working-directory: pC
         run: |
           tps statement
 
       - name: Build pD
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pD == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'D')
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pD == 'true') || contains(github.event.inputs.target, 'D')
         working-directory: pD
         run: |
           tps statement
 
       - name: Build pE
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pE == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'E')
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pE == 'true') || contains(github.event.inputs.target, 'E')
         working-directory: pE
         run: |
           tps statement
 
       - name: Build pF
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pF == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'F')
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pF == 'true') || contains(github.event.inputs.target, 'F')
         working-directory: pF
         run: |
           tps statement
 
       - name: Build pG
-        if: (github.event_name != 'workflow_dispatch' && (steps.changes.outputs.pG == 'true' || steps.changes.outputs.template == 'true')) || contains(github.event.inputs.target, 'G')
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pG == 'true') || contains(github.event.inputs.target, 'G')
         working-directory: pG
         run: |
           tps statement
@@ -166,7 +175,7 @@ jobs:
       - name: Merge pdfs
         run: |
           mkdir -p pA/attachments
-          pdfunite cover.pdf pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pG/statement/index.pdf pA/attachments/problems.pdf
+          pdfunite pA/statement/index.pdf pB/statement/index.pdf pC/statement/index.pdf pD/statement/index.pdf pE/statement/index.pdf pF/statement/index.pdf pG/statement/index.pdf pA/attachments/problems.pdf
 
       - name: Commit pdf
         run: |
