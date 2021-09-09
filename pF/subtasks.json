@@ -23,7 +23,7 @@
         },
         "sub3": {
             "index": 3,
-            "score": 5,
+            "score": 6,
             "text": "$k = n$、保證全部元素相異",
             "validators": []
         },
@@ -35,7 +35,7 @@
         },
         "sub5": {
             "index": 5,
-            "score": 11,
+            "score": 12,
             "text": "$k = 2$、保證全部元素相異",
             "validators": []
         },
