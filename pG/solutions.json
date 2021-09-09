@@ -1,5 +1,8 @@
 {
 	"ac.cpp": {
 		"verdict": "model_solution"
+	},
+	"magic.cpp": {
+		"verdict": "correct"
 	}
 }
