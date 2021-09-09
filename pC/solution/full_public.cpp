@@ -8,11 +8,6 @@ int main()
     
     int u[] = {1, 1}, v[] = {0, 0};
     
-    auto calc = [&](int i, int k) -> int
-    {
-        return k*u[i] + v[i];
-    };
-    
     int Q;
     cin >> Q;
     for (int qi=0; qi<Q; qi++)
@@ -25,7 +20,7 @@ int main()
             int k;
             cin >> k;
             
-            cout << max(calc(0, k), calc(1, k)) << "\n";
+            cout << max(k*u[0] + v[0], k*u[1] + v[1]) << "\n";
         }
         else if (qx == 2)
         {
