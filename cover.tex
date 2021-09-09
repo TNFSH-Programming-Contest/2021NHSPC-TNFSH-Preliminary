@@ -1,0 +1,54 @@
+\documentclass[a4paper]{article}
+\title{Cover}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[]{Noto Sans Mono CJK TC}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\usepackage{anyfontsize}
+\usepackage{t1enc}
+\usepackage{listings}
+\lstset{language=C++}
+\begin{document}
+
+\begin{center}
+\textbf{\huge 110 學年度全國資訊學科能力競賽}\\
+\vspace{5mm}
+\textbf{\huge 臺南一中校內初選\ 試題本}\\
+\vspace{10mm}
+\rule{17cm}{2pt}\\
+\vspace{5mm}
+
+\huge 競賽規則\\
+\end{center}
+
+\fontsize{14pt}{20pt}\selectfont
+\begin{enumerate}
+    \setlength\itemsep{0.5pt}
+    \item 競賽時間：2021/09/10 13:30 \textasciitilde \, 16:30，共 3 小時。
+    \item 本次競賽試題共 7 題，每題皆有子任務。
+    \item 每題的分數為該題所有子任務得分數加總；單筆子任務得分數為各筆繳交在該筆得到的最大分數。
+    \item 本次初選比照南區賽提供記分板，複選比照全國賽不提供記分板。
+    \item 全部題目的輸入皆為標準輸入。
+    \item 全部題目的輸出皆為標準輸出。
+    \item 所有輸入輸出請嚴格遵守題目要求，多或少的換行及空格皆有可能造成裁判系統判斷為答案錯誤。
+    \item 每題每次上傳間隔為 120 秒，裁判得視情況調整。
+    \item 所有試題相關問題請於競賽系統中提問，題目相關公告也會公告於競賽系統，請密切注意。
+    \item 如有電腦問題，請舉手向監考人員反映。
+    \item 如有廁所需求，須經過監考人員同意方可離場。
+    \item 不得攜帶任何參考資料，但競賽系統上的參考資料可自行閱讀。
+    \item 不得自行攜帶隨身碟，如需備份資料，請將資料儲存於電腦 D 槽。
+    \item 競賽中請勿交談。請勿做出任何會干擾競賽的行為。
+    \item 如需使用 C++ 的 std::cin 可使用以下程式碼及將 \lstinline{endl} 取代為 \lstinline{'\n'}  來優化輸入速度。唯須注意不可與 cstdio 混用。
+        \begin{lstlisting}
+        std::ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+\rule{17cm}{2pt}\\
+\end{center}
+\end{document}

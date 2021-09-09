@@ -8,13 +8,13 @@ on:
       - '*/statement/index.md'
       - '*/problem.json'
       - '*/subtasks.json'
-      - 'cover.pdf'
+      - 'cover.tex'
       - 'template.tex'
   workflow_dispatch:
     inputs:
         target:
             description: 'Problem labels to build'
-            default: 'ABCDEFG'
+            default: '0ABCDEFG'
 
 jobs:
   build:
@@ -76,13 +76,15 @@ jobs:
         id: changes
         with:
           filters: |
+            cover:
+              - 'cover.tex'
             pA:
               - 'pA/scripts/statement.sh'
               - 'pA/statement/*.jpg'
               - 'pA/statement/index.md'
               - 'pA/problem.json'
               - 'pA/subtasks.json'
-              - 'cover.pdf'
+              - 'cover.tex'
               - 'template.tex'
             pB:
               - 'pB/scripts/statement.sh'
@@ -126,6 +128,11 @@ jobs:
               - 'pG/problem.json'
               - 'pG/subtasks.json'
               - 'template.tex'
+
+      - name: Build cover
+        if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.cover == 'true') || contains(github.event.inputs.target, '0')
+        run: |
+          xelatex cover.tex
 
       - name: Build pA
         if: (github.event_name != 'workflow_dispatch' && steps.changes.outputs.pA == 'true') || contains(github.event.inputs.target, 'A')
@@ -182,6 +189,7 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git status
+          git add cover.pdf
           git add pA/statement/index.pdf
           git add pB/statement/index.pdf
           git add pC/statement/index.pdf
