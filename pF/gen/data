@@ -65,22 +65,6 @@ manual sub6-07.in
 manual sub6-08.in
 manual sub6-09.in
 
-@subtask sub7
-manual sub7-00.in
-manual sub7-01.in
-manual sub7-02.in
-manual sub7-03.in
-manual sub7-04.in
-
-@subtask sub8
-manual sub8-00.in
-manual sub8-01.in
-manual sub8-02.in
-manual sub8-03.in
-manual sub8-04.in
-manual sub8-05.in
-manual sub8-06.in
-
 @subtask sub9
 manual sub9-00.in
 manual sub9-01.in
