@@ -2,7 +2,7 @@
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm]{xiplus-cover.jpg}
+\includegraphics[width=12cm]{cover.jpg}
 \caption{風花向遊客解說海洋生物，出自動畫《白沙的Aquatope》}
 \end{figure}
 
