@@ -5,14 +5,11 @@
 	"magic.cpp": {
 		"verdict": "correct"
 	},
-	"extra-string.cpp": {
+	"leading-space.cpp": {
 		"verdict": "incorrect"
 	},
-	"leading-space.cpp": {
-		"verdict": "correct"
-	},
 	"inner-space.cpp": {
-		"verdict": "correct"
+		"verdict": "incorrect"
 	},
 	"trailing-space.cpp": {
 		"verdict": "correct"
@@ -22,5 +19,8 @@
 	},
 	"extra-newline.cpp": {
 		"verdict": "correct"
+	},
+	"extra-string.cpp": {
+		"verdict": "incorrect"
 	}
 }

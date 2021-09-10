@@ -1,4 +1,4 @@
-// extra-newline.cpp
+// extra-string.cpp
 // By xiplus
 #include <bits/stdc++.h>
 #define endl '\n'
