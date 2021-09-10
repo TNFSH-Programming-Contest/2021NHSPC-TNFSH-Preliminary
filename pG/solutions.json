@@ -22,5 +22,8 @@
 	},
 	"extra-string.cpp": {
 		"verdict": "incorrect"
+	},
+	"wrong-case.cpp": {
+		"verdict": "incorrect"
 	}
 }
