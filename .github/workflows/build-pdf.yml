@@ -10,6 +10,8 @@ on:
       - '*/subtasks.json'
       - 'cover.tex'
       - 'template.tex'
+    tags-ignore:
+      - '**'
   workflow_dispatch:
     inputs:
         target:

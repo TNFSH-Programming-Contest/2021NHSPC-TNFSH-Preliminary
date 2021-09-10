@@ -7,6 +7,8 @@ on:
       - '*/problem.json'
       - '*/solutions.json'
       - '*/subtasks.json'
+    tags-ignore:
+      - '**'
   workflow_dispatch:
     inputs:
         target:
