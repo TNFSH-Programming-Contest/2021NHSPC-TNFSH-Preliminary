@@ -10,8 +10,6 @@ on:
       - 'pE/**'
       - 'pF/**'
       - 'pG/**'
-    tags-ignore:
-      - '**'
   workflow_dispatch:
 
 jobs:
