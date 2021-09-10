@@ -5,6 +5,9 @@
 	"magic.cpp": {
 		"verdict": "correct"
 	},
+	"extra-string.cpp": {
+		"verdict": "incorrect"
+	},
 	"leading-space.cpp": {
 		"verdict": "correct"
 	},
