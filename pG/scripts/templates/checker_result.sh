@@ -10,7 +10,7 @@ score="$(sed -n 1p "${checker_stdout}")"
 verdict_str="$(sed -n 1p "${checker_stderr}")"
 
 case "${verdict_str}" in
-	"Correct"|"Accepted"|"Output is correct")
+	"Correct"|"Accepted"|"Output is correct"|"輸出正確。恭喜獲得成就：現代魔法初學者")
 		verdict="Correct" ;;
 	"Partially Correct"|"Output is partially correct")
 		verdict="Partially Correct" ;;

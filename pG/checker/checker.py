@@ -14,7 +14,7 @@ try:
 
     if Answer == Output:
         print("1.0")
-        print("Output is correct", file=sys.stderr)
+        print("輸出正確。恭喜獲得成就：現代魔法初學者", file=sys.stderr)
     else:
         print("0.0")
         print("Output isn't correct", file=sys.stderr)
