@@ -1,7 +1,7 @@
 ac.cpp
 solution            compile[OK]
 checker             compile[OK]
-0-01                sol[OK]    0.014     check[OK]      1.0  [Correct]             
+0-01                sol[OK]    0.012     check[OK]      1.0  [Correct]             
 all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
 
 Subtask summary
@@ -12,7 +12,7 @@ Finished.
 magic.cpp
 solution            compile[WARN]
 checker             compile[OK]
-0-01                sol[OK]    0.013     check[OK]      1.0  [Correct]             
+0-01                sol[OK]    0.012     check[OK]      1.0  [Correct]             
 all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
 
 Subtask summary
@@ -23,7 +23,7 @@ Finished.
 leading-space.cpp
 solution            compile[OK]
 checker             compile[OK]
-0-01                sol[OK]    0.015     check[OK]      0.0  [Wrong Answer]        
+0-01                sol[OK]    0.019     check[OK]      0.0  [Wrong Answer]        
 all                 [1/1 tests]    [Wrong Answer]        [0/100 pts]    [match with expected]             0-01
 
 Subtask summary
@@ -34,7 +34,7 @@ Finished.
 inner-space.cpp
 solution            compile[OK]
 checker             compile[OK]
-0-01                sol[OK]    0.014     check[OK]      0.0  [Wrong Answer]        
+0-01                sol[OK]    0.011     check[OK]      0.0  [Wrong Answer]        
 all                 [1/1 tests]    [Wrong Answer]        [0/100 pts]    [match with expected]             0-01
 
 Subtask summary
@@ -45,7 +45,7 @@ Finished.
 trailing-space.cpp
 solution            compile[OK]
 checker             compile[OK]
-0-01                sol[OK]    0.015     check[OK]      1.0  [Correct]             
+0-01                sol[OK]    0.013     check[OK]      1.0  [Correct]             
 all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
 
 Subtask summary
@@ -56,7 +56,7 @@ Finished.
 no-newline.cpp
 solution            compile[OK]
 checker             compile[OK]
-0-01                sol[OK]    0.014     check[OK]      1.0  [Correct]             
+0-01                sol[OK]    0.012     check[OK]      1.0  [Correct]             
 all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
 
 Subtask summary
@@ -67,7 +67,7 @@ Finished.
 extra-newline.cpp
 solution            compile[OK]
 checker             compile[OK]
-0-01                sol[OK]    0.014     check[OK]      1.0  [Correct]             
+0-01                sol[OK]    0.011     check[OK]      1.0  [Correct]             
 all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
 
 Subtask summary
@@ -78,7 +78,18 @@ Finished.
 extra-string.cpp
 solution            compile[OK]
 checker             compile[OK]
-0-01                sol[OK]    0.013     check[OK]      0.0  [Wrong Answer]        
+0-01                sol[OK]    0.011     check[OK]      0.0  [Wrong Answer]        
+all                 [1/1 tests]    [Wrong Answer]        [0/100 pts]    [match with expected]             0-01
+
+Subtask summary
+0/100 pts
+
+Finished.
+
+wrong-case.cpp
+solution            compile[OK]
+checker             compile[OK]
+0-01                sol[OK]    0.011     check[OK]      0.0  [Wrong Answer]        
 all                 [1/1 tests]    [Wrong Answer]        [0/100 pts]    [match with expected]             0-01
 
 Subtask summary
