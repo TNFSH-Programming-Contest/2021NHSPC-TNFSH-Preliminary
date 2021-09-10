@@ -1,6 +1,6 @@
 ac.cpp
 solution            compile[OK]
-0-01                sol[OK]    0.012     check[OK]        1  [Correct]             
+0-01                sol[OK]    0.013     check[OK]        1  [Correct]             
 all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
 
 Subtask summary
@@ -10,11 +10,61 @@ Finished.
 
 magic.cpp
 solution            compile[WARN]
+0-01                sol[OK]    0.012     check[OK]        1  [Correct]             
+all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
+
+Subtask summary
+100/100 pts
+
+Finished.
+
+leading-space.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.013     check[OK]        0  [Wrong Answer]        
+all                 [1/1 tests]    [Wrong Answer]        [0/100 pts]    [expected: correct]               0-01
+
+Subtask summary
+0/100 pts
+
+Finished.
+
+inner-space.cpp
+solution            compile[OK]
 0-01                sol[OK]    0.013     check[OK]        1  [Correct]             
 all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
 
 Subtask summary
 100/100 pts
+
+Finished.
+
+trailing-space.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.013     check[OK]        1  [Correct]             
+all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
+
+Subtask summary
+100/100 pts
+
+Finished.
+
+no-newline.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.013     check[OK]        1  [Correct]             
+all                 [1/1 tests]    [Correct]             [100/100 pts]  [match with expected]             0-01
+
+Subtask summary
+100/100 pts
+
+Finished.
+
+extra-newline.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.013     check[OK]        0  [Wrong Answer]        
+all                 [1/1 tests]    [Wrong Answer]        [0/100 pts]    [expected: correct]               0-01
+
+Subtask summary
+0/100 pts
 
 Finished.
 
