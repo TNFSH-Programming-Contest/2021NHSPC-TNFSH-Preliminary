@@ -4,5 +4,20 @@
 	},
 	"magic.cpp": {
 		"verdict": "correct"
+	},
+	"leading-space.cpp": {
+		"verdict": "correct"
+	},
+	"inner-space.cpp": {
+		"verdict": "correct"
+	},
+	"trailing-space.cpp": {
+		"verdict": "correct"
+	},
+	"no-newline.cpp": {
+		"verdict": "correct"
+	},
+	"extra-newline.cpp": {
+		"verdict": "correct"
 	}
 }
