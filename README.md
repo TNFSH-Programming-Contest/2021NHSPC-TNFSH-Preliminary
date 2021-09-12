@@ -3,6 +3,7 @@
 
 ## Quick Links
 [problems.pdf](pA/attachments/problems.pdf)
+[Ranking](ranking/Ranking.html)
 
 | ID | statement | gen | validator | solution | tests | config |
 | --- | --- | --- | --- | --- | --- | --- |
