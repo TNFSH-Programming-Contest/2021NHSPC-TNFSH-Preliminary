@@ -2,8 +2,8 @@
 110學年度資訊學科能力競賽臺南一中校內初選
 
 ## Quick Links
-[problems.pdf](pA/attachments/problems.pdf)
-[Ranking](ranking/Ranking.html)
+* [problems.pdf](pA/attachments/problems.pdf)
+* [Ranking](https://tnfsh-programming-contest.github.io/2021NHSPC-TNFSH-Preliminary/ranking/Ranking.html)
 
 | ID | statement | gen | validator | solution | tests | config |
 | --- | --- | --- | --- | --- | --- | --- |
