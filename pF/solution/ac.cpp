@@ -41,7 +41,7 @@ void solve() {
     cin >> n >> k;
     for (int i = 0; i < n; ++i)
         cin >> a[i].first, p[i] = a[i].second = i;
-    
+
     for (int l = 0, i = 0; i < n; ++i) {
         if (i - l == k) {
             s.erase(a[l]);
@@ -85,8 +85,9 @@ void solve() {
         }
     }
 
-    for (int i = 0; i < n; ++i)
-        cout << dp[find(i)] + 1 << ' ';
+    cout << dp[find(0)] + 1;
+    for (int i = 1; i < n; ++i)
+        cout << ' ' << dp[find(i)] + 1;
     cout << endl;
 }
 
